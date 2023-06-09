@@ -1,0 +1,23 @@
+.login-form {
+  border: 1px solid black;
+  padding: 40px;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.center-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.prompt {
+  text-align: center;
+  padding-top: 20px;
+}
