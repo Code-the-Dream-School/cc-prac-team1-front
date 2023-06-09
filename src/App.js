@@ -1,29 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { getAllData } from './util/index';
+// Imports - Dependencies
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
-const URL = 'http://localhost:8000/api/v1/';
+// Imports - Pages
+import LoginPage from "./components/pages/LoginPage";
 
+// Defines the routes for the application
 function App() {
-
-const [message, setMessage] = useState(''); 
-
-  useEffect(() => {
-
-    (async () => {
-      const myData = await getAllData(URL)
-      setMessage(myData.data);
-    })();
-      
-    return () => {
-      console.log('unmounting');
-    }
-
-  }, []);
-
   return (
-    <>
-      <h1>{message}</h1>
-    </>
+    <Routes>
+      <Route
+        path="/login"
+        element={<LoginPage />}
+      />
+    </Routes>
   );
 }
 
