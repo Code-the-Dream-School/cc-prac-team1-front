@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 
 // Imports - Pages
 import LoginPage from "./components/pages/LoginPage";
+import RegisterPage from "./components/pages/RegisterPage";
 
 // Defines the routes for the application
 function App() {
@@ -12,6 +13,10 @@ function App() {
       <Route
         path="/login"
         element={<LoginPage />}
+      />
+      <Route
+        path="/register"
+        element={<RegisterPage />}
       />
     </Routes>
   );
