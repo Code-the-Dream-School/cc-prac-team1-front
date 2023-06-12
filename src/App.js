@@ -2,16 +2,18 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-const URL = 'http://localhost:8000/api/v1/';
+// const URL = 'http://localhost:8000/api/v1/';
 // Imports - Pages
 import LoginPage from "./components/pages/LoginPage";
-// import Dashboard from "./components/pages/Dashboard";
+import DashBoard from "./components/pages/DashBoard";
+
+// const URL = 'http://localhost:8000/api/v1/';
 
 // Defines the routes for the application
 function App() {
   return (
     <>
-      <h1>{message}</h1>
+      {/* <h1>{message}</h1> */}
     
     <Routes>
       <Route
@@ -20,7 +22,7 @@ function App() {
       />
       <Route
         path="/dashboard"
-        element={<Dashboard />}
+        element={<DashBoard/>}
       />
     </Routes>
     </>
