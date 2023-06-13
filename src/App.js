@@ -4,6 +4,9 @@ import { Routes, Route } from "react-router-dom";
 
 // Imports - Pages
 import LoginPage from "./components/pages/LoginPage";
+import LostOrFoundChoice from './components/pages/LostOrFoundChoice'
+import AddFoundPet from "./components/pages/AddFoundPet";
+import AddLostPet from "./components/pages/AddLostPet";
 import RegisterPage from "./components/pages/RegisterPage";
 import ProfilePage from "./components/pages/ProfilePage";
 import EditProfile from "./components/pages/EditProfile";
@@ -15,6 +18,18 @@ function App() {
       <Route
         path="/login"
         element={<LoginPage />}
+      />
+      <Route
+      path="/selectlostorfound"
+      element={<LostOrFoundChoice/>}
+      />
+      <Route
+      path="/addfoundpet"
+      element={<AddFoundPet/>}
+      />
+        <Route
+      path="/addlostpet"
+      element={<AddLostPet/>}
       />
       <Route
         path="/profile"
@@ -29,6 +44,7 @@ function App() {
         element={<RegisterPage />}
       />
     </Routes>
+
   );
 }
 
