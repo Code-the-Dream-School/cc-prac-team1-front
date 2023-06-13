@@ -4,6 +4,8 @@ import { Routes, Route } from "react-router-dom";
 
 // Imports - Pages
 import LoginPage from "./components/pages/LoginPage";
+import DashBoard from "./components/pages/DashBoard";
+
 import LostOrFoundChoice from './components/pages/LostOrFoundChoice'
 import AddFoundPet from "./components/pages/AddFoundPet";
 import AddLostPet from "./components/pages/AddLostPet";
@@ -14,10 +16,15 @@ import EditProfile from "./components/pages/EditProfile";
 // Defines the routes for the application
 function App() {
   return (
+    
     <Routes>
       <Route
         path="/login"
         element={<LoginPage />}
+      />
+      <Route
+        path="/dashboard"
+        element={<DashBoard/>}
       />
       <Route
       path="/selectlostorfound"
