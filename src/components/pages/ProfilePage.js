@@ -1,7 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./css/ProfilePage.css";
+import { Button, Container, Row, Col } from "reactstrap";
 
 function ProfilePage() {
+  const goToEditProfile = useNavigate();
+
   const user = {
     name: "Bob",
     image: "image",
@@ -12,7 +16,8 @@ function ProfilePage() {
   const petDetails = [
     {
       name: "Charlie",
-      image: "image",
+      image:
+        "https://images.pexels.com/photos/1000602/pexels-photo-1000602.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       type: "Dog",
       status: "Lost",
       breed: "Beagal",
@@ -21,7 +26,8 @@ function ProfilePage() {
     },
     {
       name: "Willow",
-      image: "image",
+      image:
+        "https://images.pexels.com/photos/1437466/pexels-photo-1437466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       type: "Cat",
       status: "Found",
       breed: "N/A",
@@ -38,28 +44,29 @@ function ProfilePage() {
       <p>
         {user.email} <br /> {user.phoneNumber}
       </p>
-      <button type="submit">Update</button>
+      <Button onClick={() => goToEditProfile("/profile-edit")}>Update</Button>
       <br />
-
-      <div className="container">
-        <div className="row row-cols-auto">
-          <div className="col-2">Image</div>
-          <div className="col-2">Name</div>
-          <div className="col-2">Details</div>
-          <div className="col-2">Actions</div>
-        </div>
+      <Container>
+        <Row>
+          <Col md={2}>Image</Col>
+          <Col md={2}>Name</Col>
+          <Col md={2}>Details</Col>
+          <Col md={2}>Actions</Col>
+        </Row>
         <div>
           {petDetails.map((pet, item) => (
-            <div className="row row-cols-auto" key={item}>
-              <div className="col-2">
+            <Row key={item}>
+              <Col md={2}>
                 <img
                   src={pet.image}
                   className="rounded float-left"
                   alt="..."
+                  width={100}
                 ></img>
-              </div>
-              <div className="col-2"> {pet.name} </div>
-              <div className="col-2">
+              </Col>
+              <Col md={2}>{pet.name}</Col>
+              <Col md={2}>
+                {" "}
                 <ul>
                   <li>Type: {pet.type}</li>
                   <li>Status: {pet.status}</li>
@@ -67,16 +74,16 @@ function ProfilePage() {
                   <li>Color: {pet.color}</li>
                   <li>Gender: {pet.gender}</li>
                 </ul>
-              </div>
-              <div className="col-2">
-                <button>Remove</button>
+              </Col>
+              <Col md={2}>
+                <Button>Remove</Button>
                 <br />
-                <button>Edit</button>
-              </div>
-            </div>
+                <Button>Edit</Button>
+              </Col>
+            </Row>
           ))}
         </div>
-      </div>
+      </Container>
     </>
   );
 }
