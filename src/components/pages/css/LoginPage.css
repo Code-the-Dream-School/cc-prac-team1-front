@@ -1,16 +1,20 @@
 .login-form {
-  border: 1px solid black;
+  border: 1px solid;
+  border-color: #c4c4c4;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   padding: 40px;
+  width: 500px;
+  border-radius: 10px;
 }
 
-.center-container {
+.login-form-center-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-.center-button {
+.login-form-center-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,7 +22,26 @@
   padding-bottom: 10px;
 }
 
-.prompt {
+.login-form-button {
+  background-color: #000000;
+  border-color: #000000;
+  border-radius: 20px;
+  width: 150px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.login-form-button:hover {
+  background-color: #8464b6;
+  border-color: #8464b6;
+  transform: scale(1.05);
+}
+
+.login-form-prompt {
   text-align: center;
   padding-top: 20px;
+}
+
+.login-form-link {
+  text-decoration: none;
+  color: #8464b6;
 }
