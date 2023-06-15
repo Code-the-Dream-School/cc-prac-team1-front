@@ -31,13 +31,13 @@ const RegisterPage = () => {
   };
 
   return (
-    <Container className="center-container">
+    <Container className="register-form-center-container">
       <Form
         onSubmit={handleSubmit}
         className="register-form"
       >
         <FormGroup>
-          <p>Please fill out the form below</p>
+          <p className="register-form-prompt">Please fill out the form below</p>
           <Label for="name">Name</Label>
           <Input
             type="name"
@@ -77,17 +77,22 @@ const RegisterPage = () => {
             onChange={handlePhoneChange}
           />
         </FormGroup>
-        <div className="center-button">
+        <div className="register-form-center-button">
           <Button
             type="submit"
-            color="primary"
+            className="register-form-button"
           >
             Register
           </Button>
         </div>
-        <div className="prompt">
+        <div className="register-form-prompt">
           <p>Already have an account?</p>
-          <a href="/login">Login</a>
+          <a
+            href="/login"
+            className="register-form-link "
+          >
+            Login
+          </a>
         </div>
       </Form>
     </Container>

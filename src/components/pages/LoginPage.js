@@ -21,13 +21,15 @@ const LoginPage = () => {
   };
 
   return (
-    <Container className="center-container">
+    <Container className="login-form-center-container">
       <Form
         onSubmit={handleSubmit}
         className="login-form"
       >
         <FormGroup>
-          <p>Please login with your credentials</p>
+          <p className="login-form-prompt">
+            Please login with your credentials
+          </p>
           <Label for="email">Email</Label>
           <Input
             type="email"
@@ -47,17 +49,22 @@ const LoginPage = () => {
             onChange={handlePasswordChange}
           />
         </FormGroup>
-        <div className="center-button">
+        <div className="login-form-center-button">
           <Button
             type="submit"
-            color="primary"
+            className="login-form-button"
           >
             Login
           </Button>
         </div>
-        <div className="prompt">
+        <div className="login-form-prompt">
           <p>Don't have an account?</p>
-          <a href="/register">Register</a>
+          <a
+            href="/register"
+            className="login-form-link"
+          >
+            Register
+          </a>
         </div>
       </Form>
     </Container>
