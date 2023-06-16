@@ -16,43 +16,35 @@ function EditProfile() {
     <>
       <img src="..." className="" alt="..." />
 
-      <Container>
+      <Container className="edit-profile-container">
         <h3>Pet Information</h3>
 
-        <Form>
+        <Form className="edit-pet-info-form">
           <Row>
             <Col md={6}>
               <FormGroup>
-                <Label htmlFor="petName" className="form-label">
-                  Pet Name
-                </Label>
-                <Input type="text" className="form-control" id="petName" />
+                <Label htmlFor="petName">Pet Name</Label>
+                <Input type="text" id="petName" />
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
-                <Label htmlFor="status" className="form-label">
-                  Lost or found?
-                </Label>
-                <Input type="text" className="form-control" id="status" />
+                <Label htmlFor="status">Lost or found?</Label>
+                <Input type="text" id="status" />
               </FormGroup>
             </Col>
           </Row>
           <Row>
             <Col md={6}>
               <FormGroup>
-                <Label htmlFor="animalType" className="form-label">
-                  Animal type
-                </Label>
-                <Input type="" className="form-control" id="animalType" />
+                <Label htmlFor="animalType">Animal type</Label>
+                <Input type="text" id="animalType" />
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
-                <Label htmlFor="breed" className="form-label">
-                  Breed
-                </Label>
-                <Input type="text" className="form-control" id="breed" />
+                <Label htmlFor="breed">Breed</Label>
+                <Input type="text" id="breed" />
               </FormGroup>
             </Col>
           </Row>
@@ -60,42 +52,34 @@ function EditProfile() {
           <Row>
             <Col md={6}>
               <FormGroup>
-                <Label htmlFor="color" className="form-label">
-                  Color
-                </Label>
-                <Input type="text" className="form-control" id="color" />
+                <Label htmlFor="color">Color</Label>
+                <Input type="text" id="color" />
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
-                <Label htmlFor="gender" className="form-label">
-                  Gender
-                </Label>
-                <Input type="text" className="form-control" id="gender" />
+                <Label htmlFor="gender">Gender</Label>
+                <Input type="text" id="gender" />
               </FormGroup>
             </Col>
           </Row>
           <Row>
             <Col md={6}>
               <FormGroup>
-                <Label htmlFor="location" className="form-label">
-                  Location (Zip Code)
-                </Label>
-                <Input type="text" className="form-control" id="location" />
+                <Label htmlFor="location">Location (Zip Code)</Label>
+                <Input type="text" id="location" />
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
-                <Label htmlFor="dateFound" className="form-label">
-                  Date found
-                </Label>
-                <Input type="date" className="form-control" id="dateFound" />
+                <Label htmlFor="dateFound">Date found</Label>
+                <Input type="date" id="dateFound" />
               </FormGroup>
             </Col>
           </Row>
         </Form>
-        <h3>Contact Information</h3>
-        <Form>
+        <h3 className="edit-contact-info">Contact Information</h3>
+        <Form className="edit-contact-info-form">
           <Row>
             <Col md={6}>
               <FormGroup>
@@ -105,18 +89,12 @@ function EditProfile() {
             </Col>
             <Col md={6}>
               <FormGroup>
-                <Label htmlFor="userPhoneNumber" className="form-label">
-                  Phone Number
-                </Label>
-                <Input
-                  type="tel"
-                  className="form-control"
-                  id="userPhoneNumber"
-                />
+                <Label htmlFor="userPhoneNumber">Phone Number</Label>
+                <Input type="tel" id="userPhoneNumber" />
               </FormGroup>
             </Col>
           </Row>
-          <Button>Update</Button>
+          <Button className="profile-update">Update</Button>
         </Form>
       </Container>
     </>
