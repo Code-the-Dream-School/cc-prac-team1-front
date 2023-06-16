@@ -94,7 +94,7 @@ function EditProfile() {
               </FormGroup>
             </Col>
           </Row>
-          <Button className="profile-update">Update</Button>
+          <Button className="edit-profile-update">Update</Button>
         </Form>
       </Container>
     </>
