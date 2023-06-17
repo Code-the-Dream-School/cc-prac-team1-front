@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./css/ProfilePage.css";
+// import "./css/ProfilePage.css";
 import { Button, Container, Row, Col } from "reactstrap";
 
 function ProfilePage() {
@@ -44,10 +44,15 @@ function ProfilePage() {
       <p>
         {user.email} <br /> {user.phoneNumber}
       </p>
-      <Button onClick={() => goToEditProfile("/profile-edit")}>Update</Button>
+      <Button
+        className="profile-update"
+        onClick={() => goToEditProfile("/profile-edit")}
+      >
+        Update
+      </Button>
       <br />
-      <Container>
-        <Row>
+      <Container className="profile-container">
+        <Row className="categories-row">
           <Col md={2}>Image</Col>
           <Col md={2}>Name</Col>
           <Col md={2}>Details</Col>
@@ -55,7 +60,7 @@ function ProfilePage() {
         </Row>
         <div>
           {petDetails.map((pet, item) => (
-            <Row key={item}>
+            <Row className="pet-details-row" key={item}>
               <Col md={2}>
                 <img
                   src={pet.image}
@@ -64,9 +69,10 @@ function ProfilePage() {
                   width={100}
                 ></img>
               </Col>
-              <Col md={2}>{pet.name}</Col>
-              <Col md={2}>
-                {" "}
+              <Col className="pet-name" md={2}>
+                {pet.name}
+              </Col>
+              <Col className="pet-info" md={2}>
                 <ul>
                   <li>Type: {pet.type}</li>
                   <li>Status: {pet.status}</li>
@@ -76,9 +82,9 @@ function ProfilePage() {
                 </ul>
               </Col>
               <Col md={2}>
-                <Button>Remove</Button>
+                <Button className="pet-remove">Remove</Button>
                 <br />
-                <Button>Edit</Button>
+                <Button className="pet-edit">Edit</Button>
               </Col>
             </Row>
           ))}
