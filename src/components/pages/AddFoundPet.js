@@ -26,9 +26,8 @@ const AddFoundPet = () => {
     });
   };
 
-
   return (
-     <Container>
+    <Container>
       <Form>
         <h2>Found Pet</h2>
         <FormGroup>
@@ -50,7 +49,7 @@ const AddFoundPet = () => {
           <option value={values.animalType}>Other</option>
         </FormSelect>
         <br></br>
-          <FormGroup>
+        <FormGroup>
           <Label for="petName">Cat Breed</Label>
           <Input
             type="text"
@@ -61,8 +60,8 @@ const AddFoundPet = () => {
             onChange={handleInputChange}
           />
         </FormGroup>
-               <br></br>
-       <FormGroup>
+        <br></br>
+        <FormGroup>
           <Label for="dogBreed">Dog Breed</Label>
           <Input
             type="text"
@@ -74,21 +73,21 @@ const AddFoundPet = () => {
           />
         </FormGroup>
         <br></br>
-         <Label>Color</Label>
-           <FormSelect>
+        <Label>Color</Label>
+        <FormSelect>
           <option value={values.color}>1</option>
           <option value={values.color}>2</option>
           <option value={values.color}>3</option>
         </FormSelect>
         <br></br>
-         <Label>Sex</Label>
-          <FormSelect>
+        <Label>Sex</Label>
+        <FormSelect>
           <option value={values.sex}>Female</option>
           <option value={values.sex}>Male</option>
           <option value={values.sex}>Unknown</option>
         </FormSelect>
         <br></br>
-         <FormGroup>
+        <FormGroup>
           <Label for="location">Location(Zipcode)</Label>
           <Input
             type="text"
@@ -99,8 +98,8 @@ const AddFoundPet = () => {
             onChange={handleInputChange}
           />
         </FormGroup>
-          <br></br>
-         <FormGroup>
+        <br></br>
+        <FormGroup>
           <Label for="dateLost">Date Lost</Label>
           <Input
             type="date"
@@ -110,8 +109,8 @@ const AddFoundPet = () => {
             onChange={handleInputChange}
           />
         </FormGroup>
-            <br></br>
-         <FormGroup>
+        <br></br>
+        <FormGroup>
           <Label for="description">Description</Label>
           <Input
             type="textarea"
@@ -122,10 +121,10 @@ const AddFoundPet = () => {
             onChange={handleInputChange}
           />
         </FormGroup>
-
       </Form>
-      <Button type="submit"
-      color="FD678D">Add Found Pet</Button>
+      <Button type="submit" color="FD678D">
+        Add Found Pet
+      </Button>
     </Container>
   );
 };
