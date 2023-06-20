@@ -38,41 +38,46 @@ const petList = [
 
 function Dashboard() {
     return (
-
 <>
-        <button type="button"> Show Filters </button>
-        <button type="button"> Add Pet </button>
+        <button type="button" className="edit-filter-button"> Show Filters </button>
+        <button type="button" className="edit-addPet-button"> Add Pet </button>
         <ul>
         {petList.map(function(item){
             return (
             <li key={item.id} style={{listStyleType: "none"}}> <br/> 
     
         <Card
+            className="edit-dashboard-card-unit"
             style={{
                 width: '18rem'
                 }}
                 >
                 <img
+                className="edit-dashboard-image"
                     alt="Sample"
                     src={item.imgUrl}
                 />
-                <CardBody>
+                <CardBody className="edit-cardBody-info-box">
                     <div style={{display:"flex", flexDirection:"row"}}>
-                        <CardTitle tag="h5">
+                        <CardTitle 
+                        className="edit-petName"
+                        tag="h5">
                         {item.title}
                         </CardTitle>
                         <br/>
-                    <Button>
+                    <Button className="edit-status-for-pet">
                     {item.status}
                     </Button>
                     </div>
                         <CardSubtitle
-                        className="mb-2 text-muted"
+                        className="edit-pet-location"
+                        // className="mb-2 text-muted"
                         tag="h6"
                         >
                         {item.city}
                         </CardSubtitle>
-                    <CardText>
+                    <CardText
+                    className="edit-missing-date">
                     Missing since: {item.dateMissing}
                     </CardText>
                 </CardBody>
