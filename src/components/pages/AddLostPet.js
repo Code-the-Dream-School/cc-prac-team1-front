@@ -26,13 +26,12 @@ const AddLostPet = () => {
     });
   };
 
-
   return (
     <Container>
       <Form>
         <h2>Lost Pet</h2>
         <FormGroup>
-          <Label for="pet-name">Pet Name</Label>
+          <Label for="petName">Pet Name</Label>
           <Input
             type="text"
             id=""
@@ -43,42 +42,52 @@ const AddLostPet = () => {
           />
         </FormGroup>
 
+        <Label>Animal Type</Label>
         <FormSelect>
-          <option>Animal Type</option>
           <option value={values.animalType}>Dog</option>
           <option value={values.animalType}>Cat</option>
           <option value={values.animalType}>Other</option>
         </FormSelect>
         <br></br>
-   <FormSelect>
-          <option>Cat Breed</option>
-          <option value={values.catBreed}>1</option>
-          <option value={values.catBreed}>2</option>
-          <option value={values.catBreed}>3</option>
-        </FormSelect>
-               <br></br>
-   <FormSelect>
-          <option>Dog Breed</option>
-          <option value={values.dogBreed}>1</option>
-          <option value={values.dogBreed}>2</option>
-          <option value={values.dogBreed}>3</option>
-        </FormSelect>
+        <FormGroup>
+          <Label for="petName">Cat Breed</Label>
+          <Input
+            type="text"
+            id=""
+            label="catBreed"
+            placeholder="Enter breed if known"
+            value={values.catBreed}
+            onChange={handleInputChange}
+          />
+        </FormGroup>
         <br></br>
-           <FormSelect>
-          <option>Color</option>
+        <FormGroup>
+          <Label for="dogBreed">Dog Breed</Label>
+          <Input
+            type="text"
+            id=""
+            label="dogBreed"
+            placeholder="Enter breed if known"
+            value={values.dogBreed}
+            onChange={handleInputChange}
+          />
+        </FormGroup>
+        <br></br>
+        <Label>Color</Label>
+        <FormSelect>
           <option value={values.color}>1</option>
           <option value={values.color}>2</option>
           <option value={values.color}>3</option>
         </FormSelect>
         <br></br>
-          <FormSelect>
-          <option>Sex</option>
+        <Label>Sex</Label>
+        <FormSelect>
           <option value={values.sex}>Female</option>
           <option value={values.sex}>Male</option>
           <option value={values.sex}>Unknown</option>
         </FormSelect>
         <br></br>
-         <FormGroup>
+        <FormGroup>
           <Label for="location">Location(Zipcode)</Label>
           <Input
             type="text"
@@ -89,8 +98,8 @@ const AddLostPet = () => {
             onChange={handleInputChange}
           />
         </FormGroup>
-          <br></br>
-         <FormGroup>
+        <br></br>
+        <FormGroup>
           <Label for="dateLost">Date Lost</Label>
           <Input
             type="date"
@@ -100,8 +109,8 @@ const AddLostPet = () => {
             onChange={handleInputChange}
           />
         </FormGroup>
-            <br></br>
-         <FormGroup>
+        <br></br>
+        <FormGroup>
           <Label for="description">Description</Label>
           <Input
             type="textarea"
@@ -112,10 +121,10 @@ const AddLostPet = () => {
             onChange={handleInputChange}
           />
         </FormGroup>
-
       </Form>
-      <Button type="submit"
-      color="FD678D">Add Lost Pet</Button>
+      <Button type="submit" color="FD678D">
+        Add Lost Pet
+      </Button>
     </Container>
   );
 };
