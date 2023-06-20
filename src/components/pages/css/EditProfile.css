@@ -1,1 +1,31 @@
+.pet-info-h3 {
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+.pet-img-edit {
+  float: left;
+  margin-top: 200px;
+  margin-left: 5px;
+}
+.edit-profile-container {
+  float: right;
+  width: 700px;
+}
+.contact-info-h3 {
+  color: #8464b6;
+  margin-top: 60px;
+  margin-bottom: 50px;
+}
+.edit-profile-update {
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  width: 150px;
+  margin-top: 50px;
+  margin-bottom: 90px;
+  margin-left: 267px;
+}
 
+.edit-profile-update:hover {
+  background-color: #8464b6;
+}

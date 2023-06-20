@@ -1,0 +1,59 @@
+.profile-h1 {
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 40px;
+}
+.user-info-container {
+  margin-top: 100px;
+  text-align: center;
+  margin-left: 10px;
+}
+.user-info {
+  float: left;
+}
+.profile-update {
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  width: 150px;
+  margin-bottom: 90px;
+  /* transition: transform 0.2s ease-in-out; */
+}
+
+.profile-update:hover {
+  background-color: #8464b6;
+}
+.profile-container {
+  display: block;
+  border: 0px solid rgb(219, 215, 215);
+  box-shadow: 9px 9px 5px #00000054;
+  /* border-radius: 15px; */
+  width: 700px;
+  float: right;
+  margin-right: 10px;
+}
+.profile-h2 {
+  font-size: 20px;
+  margin-left: -12px;
+}
+
+.categories-row {
+  background-color: #8464b6;
+  padding: 15px;
+  margin-bottom: 40px;
+
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+.pet-details-row {
+  margin-bottom: 20px;
+}
+.pet-name {
+  text-align: center;
+  margin-top: 20px;
+}
+.pet-info ul {
+  list-style: none;
+  padding-left: 10px;
+}

@@ -9,15 +9,21 @@ import {
   Input,
   Col,
 } from "reactstrap";
-// import "./css/EditProfile.css";
+import "./css/EditProfile.css";
 
 function EditProfile() {
   return (
     <>
-      <img src="..." className="" alt="..." />
+      <img
+        src="https://images.pexels.com/photos/1000602/pexels-photo-1000602.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        className="pet-img-edit"
+        alt="..."
+        width={450}
+        height={350}
+      />
 
       <Container className="edit-profile-container">
-        <h3>Pet Information</h3>
+        <h3 className="pet-info-h3">Pet Information</h3>
 
         <Form className="edit-pet-info-form">
           <Row>
@@ -78,7 +84,7 @@ function EditProfile() {
             </Col>
           </Row>
         </Form>
-        <h3 className="edit-contact-info">Contact Information</h3>
+        <h3 className="contact-info-h3">Contact Information</h3>
         <Form className="edit-contact-info-form">
           <Row>
             <Col md={6}>
