@@ -6,7 +6,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import LoginPage from "./components/pages/LoginPage";
 import RegisterPage from "./components/pages/RegisterPage";
 import DashBoard from "./components/pages/Dashboard";
-import MapComponent from "./components/pages/map";
+import MapComponent from "./components/pages/Map";
 import LostOrFoundChoice from "./components/pages/LostOrFoundChoice";
 import AddFoundPet from "./components/pages/AddFoundPet";
 import AddLostPet from "./components/pages/AddLostPet";
@@ -18,6 +18,8 @@ import AboutPage from "./components/pages/AboutPage";
 // Defines the routes for the application
 function App() {
   const location = useLocation();
+  const navBarPaths = ["/", "/about", "/contact", "/dashboard", "/profile"];
+  const showNabBar = navBarPaths.includes(location.pathname);
   const navBarPaths = ["/", "/about", "/contact", "/dashboard", "/profile"];
   const showNabBar = navBarPaths.includes(location.pathname);
   return (
