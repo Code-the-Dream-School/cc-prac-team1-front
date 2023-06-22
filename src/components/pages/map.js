@@ -3,16 +3,32 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/Map.css";
+import axios from "axios";
 
 const MapComponent = () => {
-  useEffect(() => {
-    const location = [29.4241, -98.4936]; // San Antonio, Texas coordinates. These will be provided by the user. For now, they are hardcoded.
+  const userProvidedZipCode = "94536"; // User-provided ZIP code
 
-    const map = L.map("map").setView(location, 13);
+  useEffect(() => {
+    const map = L.map("map").setView([0, 0], 13); // Default initial view with [0, 0] coordinates
+
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
         'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
     }).addTo(map);
+
+    // Geocode the user-provided ZIP code
+    axios
+      .get(
+        `https://www.mapquestapi.com/geocoding/v1/address?key=${process.env.REACT_APP_MAPQUEST_KEY}&location=${userProvidedZipCode}`
+      )
+      .then((response) => {
+        const { lat, lng } = response.data.results[0].locations[0].latLng;
+        map.setView([lat, lng], 13); // Set the map view to the coordinates obtained from geocoding
+        /* L.marker([lat, lng]).addTo(map); Add a marker at the geocoded coordinates */
+      })
+      .catch((error) => {
+        console.error("Error geocoding ZIP code:", error);
+      });
   }, []);
 
   return (
