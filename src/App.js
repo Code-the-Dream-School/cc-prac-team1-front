@@ -20,8 +20,7 @@ function App() {
   const location = useLocation();
   const navBarPaths = ["/", "/about", "/contact", "/dashboard", "/profile"];
   const showNabBar = navBarPaths.includes(location.pathname);
-  const navBarPaths = ["/", "/about", "/contact", "/dashboard", "/profile"];
-  const showNabBar = navBarPaths.includes(location.pathname);
+
   return (
     <div>
       {showNabBar && <NavBar />}
