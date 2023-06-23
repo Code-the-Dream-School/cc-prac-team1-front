@@ -35,7 +35,7 @@ const LoginPage = () => {
       // Redirect to the map page
       navigate("/map");
     } catch (error) {
-      // Handle registration error
+      // Handle login error
       setError("Invalid credentials. Try again.");
       console.error(error.response.data);
     }
