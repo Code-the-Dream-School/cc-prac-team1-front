@@ -8,3 +8,12 @@
 .map-button-primary {
   margin-right: 10px;
 }
+
+.leaflet-marker-icon,
+i.bi-geo-alt-fill {
+  color: #ff0000; /* Customize the color of the marker icon */
+  font-size: 40px; /* Customize the size of the marker icon */
+  background-color: transparent !important; /* Remove the white background */
+  border: none !important; /* Remove the border */
+  box-shadow: none !important; /* Remove the box shadow */
+}
