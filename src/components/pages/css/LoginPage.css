@@ -3,8 +3,9 @@
   border-color: #c4c4c4;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   padding: 40px;
-  width: 500px;
+  width: 400px;
   border-radius: 10px;
+  position: relative;
 }
 
 .login-form-center-container {
@@ -36,7 +37,8 @@
   transform: scale(1.05);
 }
 
-.login-form-prompt {
+.login-form-prompt,
+.login-form-error {
   text-align: center;
   padding-top: 20px;
 }
@@ -44,4 +46,12 @@
 .login-form-link {
   text-decoration: none;
   color: #8464b6;
+}
+
+.login-form-error {
+  background-color: lightcoral;
+  color: white;
+  padding-top: 10px;
+  height: 45px;
+  border-radius: 5px;
 }
