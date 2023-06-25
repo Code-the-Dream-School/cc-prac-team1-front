@@ -1,6 +1,6 @@
 const LostIcon = ({ navigation }) => {
   return (
-    <button onClick={() => navigation("/addlostpet")}>
+    <button className="lost-button" onClick={() => navigation("/addlostpet")}>
       <svg
         width="150"
         height="150"
