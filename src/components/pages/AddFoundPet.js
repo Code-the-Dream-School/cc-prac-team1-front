@@ -5,6 +5,7 @@ import { useState } from "react";
 
 const AddFoundPet = () => {
   const initialValues = {
+    image: null,
     petName: "",
     animalType: "",
     breed: "",
@@ -25,10 +26,25 @@ const AddFoundPet = () => {
     });
   };
 
+    const handleSubmit = (e) => {
+    e.preventDefault();
+   
+  };
+
   return (
     <Container>
       <Form>
         <h2>Found Pet</h2>
+          <FormGroup>
+          <Label for="image">Upload Pet Image</Label>
+          <Input
+            type="file"
+            id=""
+            label="image"
+            value={values.image}
+            onChange={handleInputChange}
+          />
+        </FormGroup>
         <FormGroup>
           <Label for="petName">Pet Name</Label>
           <Input
