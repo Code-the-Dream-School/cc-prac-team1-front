@@ -7,8 +7,7 @@ const AddLostPet = () => {
   const initialValues = {
     petName: "",
     animalType: "",
-    catBreed: "",
-    dogBreed: "",
+    breed: "",
     color: "",
     sex: "",
     location: "",
@@ -50,35 +49,28 @@ const AddLostPet = () => {
         </FormSelect>
         <br></br>
         <FormGroup>
-          <Label for="petName">Cat Breed</Label>
+          <Label for="breed">Breed</Label>
           <Input
             type="text"
             id=""
-            label="catBreed"
+            label="breed"
             placeholder="Enter breed if known"
-            value={values.catBreed}
+            value={values.breed}
             onChange={handleInputChange}
           />
         </FormGroup>
         <br></br>
-        <FormGroup>
-          <Label for="dogBreed">Dog Breed</Label>
+            <FormGroup>
+          <Label for="color">Color</Label>
           <Input
             type="text"
             id=""
-            label="dogBreed"
-            placeholder="Enter breed if known"
-            value={values.dogBreed}
+            label="color"
+            placeholder="Color or colors of the pet"
+            value={values.color}
             onChange={handleInputChange}
           />
         </FormGroup>
-        <br></br>
-        <Label>Color</Label>
-        <FormSelect>
-          <option value={values.color}>1</option>
-          <option value={values.color}>2</option>
-          <option value={values.color}>3</option>
-        </FormSelect>
         <br></br>
         <Label>Sex</Label>
         <FormSelect>
