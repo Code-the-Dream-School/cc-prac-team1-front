@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const AddFoundPet = () => {
   const initialValues = {
-    image: null,
+    image: "",
     petName: "",
     animalType: "",
     breed: "",
