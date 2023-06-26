@@ -1,6 +1,6 @@
 // Imports - Dependencies
 import React from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, Router } from 'react-router-dom';
 
 // Imports - Pages
 import LoginPage from "./components/pages/LoginPage";
@@ -17,14 +17,11 @@ import AboutPage from "./components/pages/AboutPage";
 
 // Defines the routes for the application
 function App() {
-  const location = useLocation();
-  const navBarPaths = ["/", "/about", "/contact", "/dashboard", "/profile"];
-  const showNabBar = navBarPaths.includes(location.pathname);
 
   return (
     <div>
-      {showNabBar && <NavBar />}
-      <Routes>
+        <NavBar/>
+        <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/dashboard" element={<DashBoard />} />
@@ -35,7 +32,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/profile-edit" element={<EditProfile />} />
         <Route path="/about" element={<AboutPage />} />
-      </Routes>
+        </Routes>
     </div>
   );
 }
