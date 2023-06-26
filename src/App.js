@@ -14,6 +14,7 @@ import ProfilePage from "./components/pages/ProfilePage";
 import EditProfile from "./components/pages/EditProfile";
 import NavBar from "./components/elements/NavBar";
 import AboutPage from "./components/pages/AboutPage";
+import HomePage from "./components/pages/HomePage";
 
 // Defines the routes for the application
 function App() {
@@ -22,6 +23,7 @@ function App() {
     <div>
         <NavBar/>
         <Routes>
+          <Route path="/" element={<HomePage/>}/>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/dashboard" element={<DashBoard />} />
