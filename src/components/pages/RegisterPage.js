@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Container, Form, FormGroup, Label, Input, Button } from "reactstrap";
 import "./css/RegisterPage.css";
+import axios from "axios";
 
 const RegisterPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [error, setError] = useState("");
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -24,10 +27,27 @@ const RegisterPage = () => {
     setPhone(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Perform Register request with email and password
-    // Add logic here
+    try {
+      const response = await axios.post(
+        "http://localhost:5005/api/v1/auth/register",
+        {
+          name,
+          email,
+          password,
+          phone,
+        }
+      );
+
+      // Handle successful registration
+      setIsRegistered(true);
+      console.log(response.data); // You can customize the handling of the response data
+    } catch (error) {
+      // Handle registration error
+      setError("Error registering user");
+      console.error(error.response.data); // You can customize the handling of the error
+    }
   };
 
   return (
@@ -37,6 +57,10 @@ const RegisterPage = () => {
         className="register-form"
       >
         <FormGroup>
+          {isRegistered && (
+            <p className="register-form-success">Successfully registered!</p>
+          )}
+          {error && <p className="register-form-error">{error}</p>}
           <p className="register-form-prompt">Please fill out the form below</p>
           <Label for="name">Name</Label>
           <Input
@@ -58,7 +82,7 @@ const RegisterPage = () => {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="password">Password</Label>
+          <Label for="password">Password (must be at least 8 characters)</Label>
           <Input
             type="password"
             id="password"

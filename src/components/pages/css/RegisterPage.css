@@ -5,6 +5,7 @@
   padding: 40px;
   width: 500px;
   border-radius: 10px;
+  position: relative;
 }
 
 .register-form-center-container {
@@ -36,7 +37,9 @@
   transform: scale(1.05);
 }
 
-.register-form-prompt {
+.register-form-prompt,
+.register-form-success,
+.register-form-error {
   text-align: center;
   padding-top: 20px;
 }
@@ -44,4 +47,20 @@
 .register-form-link {
   text-decoration: none;
   color: #8464b6;
+}
+
+.register-form-success,
+.register-form-error {
+  padding-top: 10px;
+  height: 45px;
+  border-radius: 5px;
+}
+
+.register-form-success {
+  background-color: lightgreen;
+}
+
+.register-form-error {
+  background-color: lightcoral;
+  color: white;
 }
