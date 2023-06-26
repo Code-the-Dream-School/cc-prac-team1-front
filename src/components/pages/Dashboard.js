@@ -36,16 +36,18 @@ const petList = [
     }
 ];
 
-function Dashboard() {
+function Dashboard () {
+
     return (
-<>
+    <>
+   
         <button type="button" className="edit-filter-button"> Show Filters </button>
         <button type="button" className="edit-addPet-button"> Add Pet </button>
-        <ul>
-        {petList.map(function(item){
+        <ul> 
+         {petList.map((item) => {
             return (
-            <li key={item.id} style={{listStyleType: "none"}}> <br/> 
-    
+            <li key={item.id} style={{listStyleType: "none"}}> <br/>  
+        
         <Card
             className="edit-dashboard-card-unit"
             style={{
@@ -82,9 +84,11 @@ function Dashboard() {
                     </CardText>
                 </CardBody>
         </Card>
-                </li>
-                )})}
+                
+              </li>  
+            )})}
                 </ul>
+                
        </>
 
     )      
