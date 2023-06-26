@@ -20,7 +20,7 @@ const NavBar = () =>{
             <Nav.Link href="/dashboard">Dashboard</Nav.Link>
           </Nav>
           <Form className="d-flex">
-            <Button variant="outline-success">Profile</Button>
+            <Button href='/profile' variant="outline-success">Profile</Button>
           </Form>
         </Navbar.Collapse>
       </Container>
