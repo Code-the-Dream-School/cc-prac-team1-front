@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { Container, Form, FormGroup, Label, Input, Button } from "reactstrap";
 import "./css/LoginPage.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -14,10 +18,27 @@ const LoginPage = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Perform login request with email and password
-    // Add logic here
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5005/api/v1/auth/login",
+        {
+          email,
+          password,
+        }
+      );
+
+      // Handle successful login
+      console.log(response.data);
+      // Redirect to the map page
+      navigate("/map");
+    } catch (error) {
+      // Handle login error
+      setError("Invalid credentials. Try again.");
+      console.error(error.response.data);
+    }
   };
 
   return (
@@ -27,6 +48,7 @@ const LoginPage = () => {
         className="login-form"
       >
         <FormGroup>
+          {error && <p className="login-form-error">{error}</p>}
           <p className="login-form-prompt">
             Please login with your credentials
           </p>
