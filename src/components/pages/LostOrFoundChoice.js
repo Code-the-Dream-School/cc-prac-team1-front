@@ -8,7 +8,7 @@ const LostOrFound = () => {
   const goToAddPet = useNavigate();
 
   return (
-    <div className="container">
+    <div className="lostorfound-container">
     <Container>
       <p>Report a Lost of Found Pet</p>
       <div className="both-buttons">
