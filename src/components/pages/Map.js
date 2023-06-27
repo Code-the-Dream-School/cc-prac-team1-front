@@ -87,13 +87,17 @@ const MapComponent = () => {
     mapRef.current = L.map("map").setView([0, 0], 13);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      // Adds the tile layer from OpenStreetMap
       attribution:
         'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
-    }).addTo(mapRef.current); // Adds the tile layer to the map instance
+    }).addTo(mapRef.current);
+
+    // Trigger a map resize event to ensure it renders properly
+    setTimeout(() => {
+      mapRef.current.invalidateSize();
+    }, 0);
 
     return () => {
-      mapRef.current.remove(); // Removes the map when the component unmounts
+      mapRef.current.remove();
     };
   }, []);
 
@@ -137,30 +141,33 @@ const MapComponent = () => {
   }, [userProvidedZipCode]);
 
   return (
-    <div style={{ position: "relative" }}>
-      <div className="map-button-container">
-        <button className="map-button-primary">Button 1</button>
-        <button className="map-button-secondary">Button 2</button>
-      </div>
-      {showPrompt && (
-        <div className="custom-prompt-overlay">
-          <form
-            className="custom-prompt-form"
-            onSubmit={handlePromptSubmit}
-          >
-            <label htmlFor="zipCodeInput">Please enter your ZIP code:</label>
-            <input
-              type="text"
-              id="zipCodeInput"
-            />
-            <button type="submit">Submit</button>
-          </form>
+    <div className="map-container">
+      <div className="feed-container">{/* Add code for the feed here */}</div>
+      <div className="map-wrapper">
+        <div className="map-button-container">
+          <button className="map-button-primary">Button 1</button>
+          <button className="map-button-secondary">Button 2</button>
         </div>
-      )}
-      <div
-        id="map"
-        style={{ height: "100vh", width: "100vw" }}
-      ></div>
+        {showPrompt && (
+          <div className="custom-prompt-overlay">
+            <form
+              className="custom-prompt-form"
+              onSubmit={handlePromptSubmit}
+            >
+              <label htmlFor="zipCodeInput">Please enter your ZIP code:</label>
+              <input
+                type="text"
+                id="zipCodeInput"
+              />
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        )}
+        <div
+          id="map"
+          className="map"
+        ></div>
+      </div>
     </div>
   );
 };

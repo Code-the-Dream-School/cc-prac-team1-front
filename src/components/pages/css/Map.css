@@ -68,3 +68,27 @@ i.bi-geo-alt-fill {
   cursor: pointer;
   margin: 0 auto;
 }
+
+.map-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.feed-container {
+  width: 50%;
+  float: left;
+  /* Add any additional styles for the feed container */
+}
+
+.map-wrapper {
+  width: 50%;
+  float: right;
+  position: relative;
+  /* Add any additional styles for the map wrapper */
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+}
