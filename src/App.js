@@ -35,7 +35,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/profile-edit" element={<EditProfile />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/contactpage" element={<ContactPage/>} />
+        <Route path="/contact" element={<ContactPage/>} />
         </Routes>
     </div>
   );
