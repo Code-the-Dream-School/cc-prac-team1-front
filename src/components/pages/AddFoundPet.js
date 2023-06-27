@@ -1,14 +1,15 @@
 import React from "react";
-import { Container, Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Container, Form, FormGroup, Label, Input, Button, Col, Row } from "reactstrap";
 import FormSelect from "react-bootstrap/FormSelect";
 import { useState } from "react";
+import './css/LostAndFoundForm.css'
 
 const AddFoundPet = () => {
   const initialValues = {
+    image: "",
     petName: "",
     animalType: "",
-    catBreed: "",
-    dogBreed: "",
+    breed: "",
     color: "",
     sex: "",
     location: "",
@@ -26,11 +27,30 @@ const AddFoundPet = () => {
     });
   };
 
+    const handleSubmit = (e) => {
+    e.preventDefault();
+   
+  };
+
   return (
     <Container>
       <Form>
         <h2>Found Pet</h2>
-        <FormGroup>
+        <Row>
+          <Col>
+          <FormGroup>
+          <Label for="image">Upload Pet Image</Label>
+          <Input
+            type="file"
+            id=""
+            label="image"
+            value={values.image}
+            onChange={handleInputChange}
+          />
+        </FormGroup>
+        </Col>
+        <Col>
+        <FormGroup >
           <Label for="petName">Pet Name</Label>
           <Input
             type="text"
@@ -41,52 +61,63 @@ const AddFoundPet = () => {
             onChange={handleInputChange}
           />
         </FormGroup>
-
+        </Col>
+        </Row>
+<Row>
+  <Col>
         <Label>Animal Type</Label>
         <FormSelect>
           <option value={values.animalType}>Dog</option>
           <option value={values.animalType}>Cat</option>
           <option value={values.animalType}>Other</option>
         </FormSelect>
+        </Col>
         <br></br>
+        <Col>
         <FormGroup>
-          <Label for="petName">Cat Breed</Label>
+          <Label for="breed">Breed</Label>
           <Input
             type="text"
             id=""
-            label="catBreed"
+            label="breed"
             placeholder="Enter breed if known"
-            value={values.catBreed}
+            value={values.breed}
             onChange={handleInputChange}
           />
         </FormGroup>
+        </Col>
+        </Row>
         <br></br>
-        <FormGroup>
-          <Label for="dogBreed">Dog Breed</Label>
+        <Row>
+          <Col>
+          <FormGroup>
+          <Label for="petName">Color</Label>
           <Input
             type="text"
             id=""
-            label="dogBreed"
-            placeholder="Enter breed if known"
-            value={values.dogBreed}
+            label="color"
+            placeholder="Color or colors of the pet..."
+            value={values.color}
             onChange={handleInputChange}
+            
           />
         </FormGroup>
+        </Col>
+
+
         <br></br>
-        <Label>Color</Label>
-        <FormSelect>
-          <option value={values.color}>1</option>
-          <option value={values.color}>2</option>
-          <option value={values.color}>3</option>
-        </FormSelect>
-        <br></br>
+        <Col>
         <Label>Sex</Label>
         <FormSelect>
           <option value={values.sex}>Female</option>
           <option value={values.sex}>Male</option>
           <option value={values.sex}>Unknown</option>
         </FormSelect>
+        </Col>
+        </Row>
         <br></br>
+        <Row>
+          <Col>
         <FormGroup>
           <Label for="location">Location(Zipcode)</Label>
           <Input
@@ -96,9 +127,12 @@ const AddFoundPet = () => {
             placeholder="Zipcode"
             value={values.location}
             onChange={handleInputChange}
+           
           />
         </FormGroup>
+        </Col>
         <br></br>
+        <Col>
         <FormGroup>
           <Label for="dateLost">Date Lost</Label>
           <Input
@@ -107,9 +141,12 @@ const AddFoundPet = () => {
             label="dateLost"
             value={values.dateLost}
             onChange={handleInputChange}
+            
           />
         </FormGroup>
+        </Col>
         <br></br>
+       
         <FormGroup>
           <Label for="description">Description</Label>
           <Input
@@ -119,12 +156,17 @@ const AddFoundPet = () => {
             label="description"
             value={values.description}
             onChange={handleInputChange}
+           
           />
         </FormGroup>
+       
+        </Row>
       </Form>
-      <Button type="submit" color="FD678D">
+      
+      <button className="form-button" type="submit" >
         Add Found Pet
-      </Button>
+      </button>
+   
     </Container>
   );
 };

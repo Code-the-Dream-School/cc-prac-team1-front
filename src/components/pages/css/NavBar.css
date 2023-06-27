@@ -1,0 +1,19 @@
+
+.navbar-link:hover{
+color: #8464B6;
+}
+
+.navbar-button{
+    color: #8464B6;
+    border-color: #8464B6;
+}
+
+.navbar-button:hover{
+background-color: #8464B6;
+border-color: #8464B6;
+}
+
+.navbar-button:active::after{
+    background-color: #8464B6;
+        border-color: #8464B6;
+}
