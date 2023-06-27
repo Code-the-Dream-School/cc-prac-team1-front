@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button } from "reactstrap";
 // import MapComponent from "./Map";
+import axios from "axios";
 
 const petList = [
     {
@@ -36,6 +37,25 @@ const petList = [
         imgUrl:"http://placekitten.com/400/200",
     }
 ];
+
+//this needs to be connected to MAP COMPONENT
+const CardList = () => {
+    const [cards, setCards] = useState ([]);
+}
+
+useEffect(() => {
+    const fetchCards = async () => {
+      try {
+        const response = await axios.get("http://localhost:5005/api/v1/pets");
+        setCards(response.data);
+      } catch (error) {
+        console.error('Error fetching cards:', error);
+      }
+    };
+
+    fetchCards();
+  }, []);
+
 
 function Dashboard () {
 
