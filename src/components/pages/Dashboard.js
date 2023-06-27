@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button } from "reactstrap";
+// import MapComponent from "./Map";
 
 const petList = [
     {
@@ -88,7 +89,7 @@ function Dashboard () {
               </li>  
             )})}
                 </ul>
-                
+                {/* <MapComponent/> */}
        </>
 
     )      
