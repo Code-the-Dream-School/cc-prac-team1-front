@@ -5,7 +5,6 @@ import { Routes, Route } from 'react-router-dom';
 // Imports - Pages
 import LoginPage from "./components/pages/LoginPage";
 import RegisterPage from "./components/pages/RegisterPage";
-import Dashboard from "./components/pages/Dashboard";
 import MapComponent from "./components/pages/Map";
 import LostOrFoundChoice from "./components/pages/LostOrFoundChoice";
 import AddFoundPet from "./components/pages/AddFoundPet";
@@ -27,8 +26,7 @@ function App() {
           <Route path="/" element={<HomePage/>}/>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/map" element={<MapComponent />} />
+        <Route path="/dashboard" element={<MapComponent />} />
         <Route path="/selectlostorfound" element={<LostOrFoundChoice />} />
         <Route path="/addfoundpet" element={<AddFoundPet />} />
         <Route path="/addlostpet" element={<AddLostPet />} />
