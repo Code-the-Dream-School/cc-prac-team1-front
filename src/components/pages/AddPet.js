@@ -1,12 +1,12 @@
 import React from "react";
-import { Container, Form, FormGroup, Label, Input, Button, Col, Row } from "reactstrap";
+import { Container, Form, FormGroup, Label, Input, Col, Row } from "reactstrap";
 import FormSelect from "react-bootstrap/FormSelect";
 import { useState } from "react";
 import './css/LostAndFoundForm.css'
+import LostOrFound from "./LostOrFoundChoice";
 
-const AddFoundPet = () => {
+const AddPet = () => {
   const initialValues = {
-    image: "",
     petName: "",
     animalType: "",
     breed: "",
@@ -19,6 +19,11 @@ const AddFoundPet = () => {
 
   const [values, setValues] = useState(initialValues);
 
+   const [image, setImage] = useState(null);
+
+
+  const [clickBack, setClickBack] = useState(false)
+
   const handleInputChange = (e) => {
     const { label, value } = e.target;
     setValues({
@@ -27,15 +32,26 @@ const AddFoundPet = () => {
     });
   };
 
-    const handleSubmit = (e) => {
-    e.preventDefault();
-   
-  };
+  const handleClickBack = () =>{
+    setClickBack(true)
+  }
 
+  //   const handleSubmit = (e) => {
+  //   e.preventDefault();
+   
+  // };
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+  };
   return (
+   <div>
+    {!clickBack && (
     <Container>
+       <div className="space-for-header"></div>
+       <button onClick={handleClickBack}><i class="bi bi-arrow-left-square"></i></button>
+       
       <Form>
-        <h2>Found Pet</h2>
         <Row>
           <Col>
           <FormGroup>
@@ -44,8 +60,8 @@ const AddFoundPet = () => {
             type="file"
             id=""
             label="image"
-            value={values.image}
-            onChange={handleInputChange}
+            value={image}
+            onChange={handleImageChange}
           />
         </FormGroup>
         </Col>
@@ -164,11 +180,13 @@ const AddFoundPet = () => {
       </Form>
       
       <button className="form-button" type="submit" >
-        Add Found Pet
+        Add Pet
       </button>
    
-    </Container>
+    </Container>)}
+    {clickBack && <LostOrFound/>}
+    </div>
   );
 };
 
-export default AddFoundPet;
+export default AddPet;

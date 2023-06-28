@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./css/LostOrFoundChoice.css";
 import FoundIcon from  "../../creative-assets/found-icon.js"
 import LostIcon from "../../creative-assets/lost-icon"; 
-import AddFoundPet from "./AddFoundPet";
+import AddFoundPet from "./AddPet";
 
 const LostOrFound = () => {
 
