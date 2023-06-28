@@ -5,8 +5,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./css/Map.css";
 import axios from "axios";
+import {
+  Card,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  CardText,
+  Button,
+} from "reactstrap";
 
 const MapComponent = () => {
+  
+
   const [userProvidedZipCode, setUserProvidedZipCode] = useState(""); // Initializes state variables for the user-provided ZIP code
   const [showPrompt, setShowPrompt] = useState(true); // Initializes state variables to control the visibility of the prompt
 
@@ -101,23 +111,22 @@ const MapComponent = () => {
     };
   }, []);
 
+  const [petList, setPetList] = useState([]);
   // Fetches pet data and geocode ZIP code when user provides a ZIP code
   useEffect(() => {
     if (userProvidedZipCode) {
-      geocodeZipCode(userProvidedZipCode) // Geocodes the user provided ZIP code
+      geocodeZipCode(userProvidedZipCode)
         .then(({ lat, lng }) => {
-          mapRef.current.setView([lat, lng], 13); // Sets the map view to the geocoded coordinates
-
+          mapRef.current.setView([lat, lng], 13);
           axios
-            .get("http://localhost:5005/api/v1/pets") // Fetches pet data from the API
+            .get("http://localhost:5005/api/v1/pets")
             .then((response) => {
               const fetchedPets = response.data;
-
+              setPetList(fetchedPets);
               fetchedPets.forEach(async (pet) => {
-                // Iterates over the fetched pets
                 try {
-                  const { lat, lng } = await geocodeZipCode(pet.petLocation); // Geocodes the pet's ZIP code
-                  addMarkerToMap(lat, lng, pet); // Adds a marker to the map for the pet
+                  const { lat, lng } = await geocodeZipCode(pet.petLocation);
+                  addMarkerToMap(lat, lng, pet);
                 } catch (error) {
                   console.error("Error geocoding pet's ZIP code:", error);
                 }
@@ -133,6 +142,8 @@ const MapComponent = () => {
     }
   }, [userProvidedZipCode]);
 
+
+
   // Shows prompt if ZIP code is not provided
   useEffect(() => {
     if (!userProvidedZipCode) {
@@ -142,7 +153,75 @@ const MapComponent = () => {
 
   return (
     <div className="map-container">
-      <div className="feed-container">{/* Add code for the feed here */}</div>
+      <div className="feed-container">{
+        <>
+        <button
+          type="button"
+          className="edit-filter-button"
+        >
+          {" "}
+          Show Filters{" "}
+        </button>
+        <button
+          type="button"
+          className="edit-addPet-button"
+        >
+          {" "}
+          Add Pet{" "}
+        </button>
+        <ul>
+          {petList.map((item) => {
+            return (
+              <li
+                key={item.id}
+                style={{ listStyleType: "none" }}
+              >
+                {" "}
+                <br />
+                <Card
+                  className="edit-dashboard-card-unit"
+                  style={{
+                    width: "18rem",
+                  }}
+                >
+                  <img
+                    className="edit-dashboard-image"
+                    alt="Sample"
+                    src={item.image}
+                  />
+                  <CardBody className="edit-cardBody-info-box">
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                      <CardTitle
+                        className="edit-petName"
+                        tag="h5"
+                      >
+                        {item.petName}
+                      </CardTitle>
+                      <br />
+                      <Button className="edit-status-for-pet">
+                        {item.petSituation}
+                      </Button>
+                    </div>
+                    <CardSubtitle
+                      className="edit-pet-location"
+                      // className="mb-2 text-muted"
+                      tag="h6"
+                    >
+                      {item.petLocation}
+                    </CardSubtitle>
+                    <CardText className="edit-missing-date">
+                      Missing since: {item.petDate}
+                    </CardText>
+                  </CardBody>
+                </Card>
+              </li>
+            );
+          })}
+        </ul>
+       
+      </>
+      /* Add code for the feed here */
+      }</div>
       <div className="map-wrapper">
         <div className="map-button-container">
           <button className="map-button-primary">Button 1</button>

@@ -7,8 +7,7 @@ import {
   CardText,
   Button,
 } from "reactstrap";
-// import MapComponent from "./Map";
-import axios from "axios";
+
 
 const petList = [
   {
@@ -131,7 +130,7 @@ function Dashboard() {
           );
         })}
       </ul>
-      {/* <MapComponent/> */}
+     
     </>
   );
 }
