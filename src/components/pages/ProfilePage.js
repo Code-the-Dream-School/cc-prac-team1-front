@@ -8,19 +8,21 @@ function ProfilePage() {
   const [user, setUser] = useState(null);
   const [petDetails, setPetDetails] = useState([]);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const fetchData = async () => {
     try {
       const response = await axios.get("http://localhost:5005/api/v1/pets");
       setUser(response.data[0].contact);
       setPetDetails(response.data);
     } catch (error) {
-      console.log(error);
+      console.log(
+        "Error fetching user and pet information",
+        error.response.data
+      );
     }
   };
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const goToEditProfile = useNavigate();
 
