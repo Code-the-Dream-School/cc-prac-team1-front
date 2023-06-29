@@ -208,15 +208,12 @@ const MapComponent = () => {
 
             <div className="filter-item">
               <label htmlFor="colorFilter">Pet Color:</label>
-              <div className="dropdown-group">
-                <select id="colorFilter">
-                  <option value="">Select Color</option>
-                  <option value="black">Black</option>
-                  <option value="brown">Brown</option>
-                  <option value="white">White</option>
-                  <option value="gray">Gray</option>
-                  <option value="orange">Orange</option>
-                </select>
+              <div className="input-group">
+                <input
+                  type="text"
+                  id="nameFilter"
+                  placeholder="Enter pet's color"
+                />
               </div>
             </div>
           </div>
