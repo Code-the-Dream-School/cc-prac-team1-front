@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AddFoundPet from '../components/pages/AddFoundPet'
+import AddFoundPet from '../components/pages/AddPet'
 
 
 const LostIcon = () => {
