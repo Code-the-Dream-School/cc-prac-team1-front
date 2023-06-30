@@ -15,6 +15,13 @@ const MapComponent = () => {
 
   const mapRef = useRef(null); // Ref to store the map instance
 
+  // Sets the token variable and url for the Fetch API requests
+  const token = localStorage.getItem("token");
+
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+
   // Defines an asynchronous function to geocode a ZIP code using MapQuest API
   const geocodeZipCode = async (zipcode) => {
     try {
@@ -92,7 +99,7 @@ const MapComponent = () => {
 
   // Initializes the map instance
   useEffect(() => {
-    mapRef.current = L.map("map").setView([0, 0], 13);
+    mapRef.current = L.map("map").setView([0, 0], 14);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
@@ -116,9 +123,9 @@ const MapComponent = () => {
     if (userProvidedZipCode) {
       geocodeZipCode(userProvidedZipCode)
         .then(({ lat, lng }) => {
-          mapRef.current.setView([lat, lng], 13);
+          mapRef.current.setView([lat, lng], 14);
           axios
-            .get("http://localhost:5005/api/v1/pets")
+            .get("http://localhost:5005/api/v1/pets", config)
             .then((response) => {
               const fetchedPets = response.data;
               setPetList(fetchedPets);

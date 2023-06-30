@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Nav, Navbar, Container, Dropdown } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../creative-assets/logo.png";
 import personFillIcon from "../../creative-assets/person-fill.svg";
 import addPetIcon from "../../creative-assets/add-pet-icon.svg";
@@ -9,6 +9,7 @@ import "../pages/css/NavBar.css";
 const NavBar = ({ isLoggedIn }) => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +30,14 @@ const NavBar = ({ isLoggedIn }) => {
 
   const toggleProfileMenu = () => {
     setShowProfileMenu(!showProfileMenu);
+  };
+
+  const handleLogout = () => {
+    // Delete token from local storage
+    localStorage.removeItem("token");
+
+    // Navigate user to home page
+    navigate("/");
   };
 
   const renderMenuItems = () => {
@@ -105,12 +114,7 @@ const NavBar = ({ isLoggedIn }) => {
               >
                 Profile
               </Dropdown.Item>
-              <Dropdown.Item
-                as={Link}
-                to="/logout"
-              >
-                Logout
-              </Dropdown.Item>
+              <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </>
