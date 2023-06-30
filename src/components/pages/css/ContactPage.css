@@ -1,0 +1,136 @@
+
+.contact {
+    flex-shrink: 0;
+    background: black;
+    padding: 100px 50px 80px;
+}
+
+.contact h1 {
+    color: #FEFEFE;
+    font-size: 64px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.contact p {
+    color: #FEFEFE;
+    font-size: 24px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.general {
+    padding: 100px 50px;
+    color: red;
+}
+
+.general-title {
+    padding: 1px 85px;
+    color: #8464B6;
+    text-align: left;
+    font-size: 48px;
+    font-family: Montserrat;
+    font-weight: bolder;
+}
+
+.general p {
+    color: black;
+    padding: 10px 90px;
+}
+
+.support {
+    background-color: #8464B6;
+    padding: 20px 40px;
+    color: white;
+}
+
+.support-title {
+    color: white;
+    font-weight: 1000;
+    text-align: center;
+    font-size: 48px;
+    font-family: Montserrat;
+    font-style: normal;
+    line-height: normal;
+}
+
+.support p {
+    display: flex;
+    width: 500px;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 0px 0px 20px; 
+    font-size: 22px;
+}
+
+.support b, a {
+    font-size: 22px;
+    padding: 0px 0px 0px 20px; 
+}
+
+.partner {
+    background: #F2F2F2;
+    padding: 20px 40px;
+    color: black;
+}
+
+.partner-title {
+    color: black;
+    font-weight: 1000;
+    text-align: left;
+    font-size: 48px;
+    font-family: Montserrat;
+    font-style: normal;
+    line-height: normal;
+}
+
+.partner p {
+    display: flex;
+    width: 500px;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 0px 0px 0px;
+}
+
+.partner b, a {
+    font-size: 22px;
+    padding: 0px 2px 1px 1px; 
+}
+
+.connect {
+    padding: 50px 40px 1px 0px;
+    color: black;
+}
+
+.connect-title {
+    color: #8464B6;
+    text-align: center;
+    font-size: 48px;
+    font-family: Montserrat;
+    font-weight: bolder;
+}
+
+.connect p {
+    color: black;
+    padding: 10px 90px;
+    font-size: 25px;
+}
+
+.connect div {
+    font-size: 60px;
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.connect i {
+    padding: 50px;
+}
+
+.footer {
+    background-color: black;
+    padding: 100px 50px;
+}
