@@ -218,3 +218,27 @@ i.bi-geo-alt-fill {
 .card-description {
   font-size: 14px;
 }
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0 10px;
+}
+
+.pagination-arrow:focus {
+  outline: none;
+}
+
+.page-number {
+  font-weight: bold;
+  margin: 0 10px;
+}

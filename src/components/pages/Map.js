@@ -12,6 +12,11 @@ const MapComponent = () => {
   const [userProvidedZipCode, setUserProvidedZipCode] = useState(""); // Initializes state variables for the user-provided ZIP code
   const [showPrompt, setShowPrompt] = useState(true); // Initializes state variables to control the visibility of the prompt
   const [showGif, setShowGif] = useState(true); // Initializes state variable to control the visibility of the gif
+  const [currentPage, setCurrentPage] = useState(1); // Current page number
+  const [petsPerPage] = useState(12); // Number of pets to show per page
+  const [totalPages, setTotalPages] = useState(1); // Total number of pages
+  const [totalPets, setTotalPets] = useState(-1);
+  const [showPagination, setShowPagination] = useState(false);
 
   const mapRef = useRef(null); // Ref to store the map instance
 
@@ -118,36 +123,59 @@ const MapComponent = () => {
 
   const [petList, setPetList] = useState([]);
 
-  // Fetches pet data and geocode ZIP code when user provides a ZIP code
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   useEffect(() => {
     if (userProvidedZipCode) {
       geocodeZipCode(userProvidedZipCode)
         .then(({ lat, lng }) => {
           mapRef.current.setView([lat, lng], 14);
-          axios
-            .get("http://localhost:5005/api/v1/pets", config)
-            .then((response) => {
-              const fetchedPets = response.data;
-              setPetList(fetchedPets);
-              fetchedPets.forEach(async (pet) => {
-                try {
-                  const { lat, lng } = await geocodeZipCode(pet.petLocation);
-                  addMarkerToMap(lat, lng, pet);
-                } catch (error) {
-                  console.error("Error geocoding pet's ZIP code:", error);
-                }
-              });
-              setShowGif(false);
-            })
-            .catch((error) => {
-              console.error("Error fetching pets:", error);
-            });
         })
         .catch((error) => {
           console.error("Error geocoding ZIP code:", error);
         });
     }
   }, [userProvidedZipCode]);
+
+  useEffect(() => {
+    if (userProvidedZipCode) {
+      axios
+        .get("http://localhost:5005/api/v1/pets", config)
+        .then((response) => {
+          const fetchedPets = response.data;
+          setPetList(fetchedPets);
+          setTotalPets(fetchedPets.length);
+          setShowPagination(true);
+          setShowGif(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching pets:", error);
+        });
+    }
+  }, [userProvidedZipCode]);
+
+  useEffect(() => {
+    if (userProvidedZipCode && petList.length > 0) {
+      const addMarkersToMap = async () => {
+        for (const pet of petList) {
+          try {
+            const { lat, lng } = await geocodeZipCode(pet.petLocation);
+            addMarkerToMap(lat, lng, pet);
+          } catch (error) {
+            console.error("Error geocoding pet's ZIP code:", error);
+          }
+        }
+
+        // Calculate the total number of pages based on the pet list length and pets per page
+        const total = Math.ceil(petList.length / petsPerPage);
+        setTotalPages(total);
+      };
+
+      addMarkersToMap();
+    }
+  }, [userProvidedZipCode, petList, petsPerPage]);
 
   // Shows prompt if ZIP code is not provided
   useEffect(() => {
@@ -270,45 +298,73 @@ const MapComponent = () => {
             />
           )}
         </div>
+        {totalPets !== -1 && (
+          <div className="total-pets">Total Pets: {totalPets}</div>
+        )}
         <Row>
-          {petList.map((pet, index) => (
-            <Col
-              md={6}
-              key={index}
-            >
-              <Card className="mb-3">
-                <div className="card-header">
-                  <img
-                    src={pet.petImage || "https://picsum.photos/id/237/300/200"}
-                    alt="Pet_Image"
-                    className="card-image"
-                  />
-                </div>
-                <CardBody>
-                  <div className="d-flex align-items-center justify-content-between mb-3">
-                    <div>
-                      <h5 className="card-title mb-0">
-                        {pet.petName || "Pet name not available"}
-                      </h5>
-                    </div>
-                    <div className={`card-pet-situation ${pet.petSituation}`}>
-                      {pet.petSituation === "found" ? "Found" : "Lost"}
-                    </div>
+          {petList
+            .slice((currentPage - 1) * petsPerPage, currentPage * petsPerPage)
+            .map((pet, index) => (
+              <Col
+                md={6}
+                key={index}
+              >
+                <Card className="mb-3">
+                  <div className="card-header">
+                    <img
+                      src={
+                        pet.petImage || "https://picsum.photos/id/237/300/200"
+                      }
+                      alt="Pet_Image"
+                      className="card-image"
+                    />
                   </div>
-                  <p className="card-date mb-2">
-                    {pet.petSituation === "found"
-                      ? "Found on"
-                      : "Missing since"}{" "}
-                    {pet.petDate}
-                  </p>
-                  <p className="card-description">
-                    {pet.petDescription || "No description provided"}
-                  </p>
-                </CardBody>
-              </Card>
-            </Col>
-          ))}
+                  <CardBody>
+                    <div className="d-flex align-items-center justify-content-between mb-3">
+                      <div>
+                        <h5 className="card-title mb-0">
+                          {pet.petName || "Pet name not available"}
+                        </h5>
+                      </div>
+                      <div className={`card-pet-situation ${pet.petSituation}`}>
+                        {pet.petSituation === "found" ? "Found" : "Lost"}
+                      </div>
+                    </div>
+                    <p className="card-date mb-2">
+                      {pet.petSituation === "found"
+                        ? "Found on"
+                        : "Missing since"}{" "}
+                      {pet.petDate}
+                    </p>
+                    <p className="card-description">
+                      {pet.petDescription || "No description provided"}
+                    </p>
+                  </CardBody>
+                </Card>
+              </Col>
+            ))}
         </Row>
+        {showPagination && (
+          <div className="pagination">
+            <button
+              className="pagination-arrow"
+              disabled={currentPage === 1}
+              onClick={() => handlePageChange(currentPage - 1)}
+            >
+              <i className="bi bi-arrow-left"></i>
+            </button>
+            <div className="page-number">
+              {currentPage} / {totalPages}
+            </div>
+            <button
+              className="pagination-arrow"
+              disabled={currentPage === totalPages}
+              onClick={() => handlePageChange(currentPage + 1)}
+            >
+              <i className="bi bi-arrow-right"></i>
+            </button>
+          </div>
+        )}
       </div>
       <div className="map-wrapper">
         {showPrompt && (
