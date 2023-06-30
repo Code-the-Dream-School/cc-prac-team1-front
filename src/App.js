@@ -1,25 +1,27 @@
 // Imports - Dependencies
-import React from "react";
-import { Routes, Route } from 'react-router-dom';
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
 // Imports - Pages
 import LoginPage from "./components/pages/LoginPage";
 import RegisterPage from "./components/pages/RegisterPage";
-import DashBoard from "./components/pages/Dashboard";
 import MapComponent from "./components/pages/Map";
 import LostOrFoundChoice from "./components/pages/LostOrFoundChoice";
 import ProfilePage from "./components/pages/ProfilePage";
 import EditProfile from "./components/pages/EditProfile";
 import NavBar from "./components/elements/NavBar";
 import AboutPage from "./components/pages/AboutPage";
+import ContactPage from "./components/pages/ContactPage";
 import HomePage from "./components/pages/HomePage";
 
 // Defines the routes for the application
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // change this value to false to see the nav bar for non-logged in users
 
   return (
     <div>
-        <NavBar/>
+      <NavBar isLoggedIn={isLoggedIn} />
+      <div>
         <Routes>
           <Route path="/" element={<HomePage/>}/>
         <Route path="/login" element={<LoginPage />} />
@@ -31,6 +33,7 @@ function App() {
         <Route path="/profile-edit" element={<EditProfile />} />
         <Route path="/about" element={<AboutPage />} />
         </Routes>
+      </div>
     </div>
   );
 }

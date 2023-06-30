@@ -1,56 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./css/ProfilePage.css";
 import { Button, Container, Col, Row } from "reactstrap";
+import axios from "axios";
 
 function ProfilePage() {
-  const goToEditProfile = useNavigate();
+  const [user, setUser] = useState(null);
+  const [petDetails, setPetDetails] = useState([]);
 
-  const user = {
-    name: "Bob",
-    image:
-      "https://www.shutterstock.com/image-vector/man-icon-vector-600w-1040084344.jpg",
-    email: "bob123@gmail.com",
-    phoneNumber: "(123) 456-6789",
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("http://localhost:5005/api/v1/pets");
+      setUser(response.data[0].contact);
+      setPetDetails(response.data);
+    } catch (error) {
+      console.log(
+        "Error fetching user and pet information",
+        error.response.data
+      );
+    }
   };
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  const petDetails = [
-    {
-      name: "Charlie",
-      image:
-        "https://images.pexels.com/photos/1000602/pexels-photo-1000602.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      type: "Dog",
-      status: "Lost",
-      breed: "Beagal",
-      color: "Brown",
-      gender: "Male",
-      description: "Has a large black circle on left back leg",
-    },
-    {
-      name: "Willow",
-      image:
-        "https://images.pexels.com/photos/1437466/pexels-photo-1437466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      type: "Cat",
-      status: "Found",
-      breed: "N/A",
-      color: "Orange",
-      gender: "Female",
-      description: "",
-    },
-  ];
+  const goToEditProfile = useNavigate();
 
   return (
     <>
       <h1 className="profile-h1">Profile</h1>
       <Container className="user-info-container">
-        <Col className="user-info">
-          <img src={user.image} alt={user.name} width={350} />
-          <h3>{user.name}</h3>
-          <p>
-            {user.email} <br /> {user.phoneNumber}
-          </p>
-          <Button className="profile-update">Update</Button>
-        </Col>
+        {user && (
+          <div>
+            <Col className="user-info" key={user.id}>
+              <img src={user.image} alt={user.name} width={350} />
+              <h3>{user.name}</h3>
+              <p>
+                {user.email} <br /> {user.phone}
+              </p>
+              <Button className="profile-update">Update</Button>
+            </Col>
+          </div>
+        )}
       </Container>
       <br />
       <Container className="profile-container">
@@ -63,8 +54,8 @@ function ProfilePage() {
           <Col md={2}>Actions</Col>
         </Row>
         <div>
-          {petDetails.map((pet, item) => (
-            <Row className="pet-details-row" key={item}>
+          {petDetails.map((pet) => (
+            <Row className="pet-details-row" key={pet._id}>
               <Col md={2}>
                 <img
                   src={pet.image}
@@ -74,20 +65,27 @@ function ProfilePage() {
                 ></img>
               </Col>
               <Col className="pet-name" md={2}>
-                {pet.name}
+                {pet.petName}
               </Col>
               <Col className="pet-info" md={3}>
                 <ul>
-                  <li>Type: {pet.type}</li>
-                  <li>Status: {pet.status}</li>
-                  <li>Breed: {pet.breed}</li>
-                  <li>Color: {pet.color}</li>
-                  <li>Gender: {pet.gender}</li>
+                  <li>Type: {pet.animalType}</li>
+                  <li>Status: {pet.petSituation}</li>
+                  <li>Breed: {pet.petBreed}</li>
+                  <li>Color: {pet.petColor}</li>
+                  <li>Gender: {pet.petGender}</li>
+                  <li>ZIP code: {pet.petLocation}</li>
                 </ul>
               </Col>
               <Col md={3}>{pet.description}</Col>
               <Col md={2}>
-                <Button className="pet-remove">Remove</Button>
+                <Button
+                  type="submit"
+                  // onClick={() => removePet(pet._id)}
+                  className="pet-remove"
+                >
+                  Remove
+                </Button>
                 <br />
                 <Button
                   className="pet-edit"

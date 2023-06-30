@@ -1,3 +1,15 @@
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.image-container-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Positions and styles the container for map buttons */
 .map-button-container {
   position: absolute;
   top: 10px;
@@ -5,14 +17,204 @@
   z-index: 999;
 }
 
+/* Adds margin to the primary map button */
 .map-button-primary {
   margin-right: 10px;
 }
 
+/* Styles the marker icon and geo-alt-fill element */
 .leaflet-marker-icon,
 i.bi-geo-alt-fill {
-  font-size: 40px; /* Customize the size of the marker icon */
-  background-color: transparent !important; /* Remove the white background */
-  border: none !important; /* Remove the border */
-  box-shadow: none !important; /* Remove the box shadow */
+  font-size: 40px;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Positions and styles the overlay for the custom prompt */
+.custom-prompt-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Styles the custom prompt form */
+.custom-prompt-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+/* Styles the labels in the custom prompt form */
+.custom-prompt-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Styles the input fields in the custom prompt form */
+.custom-prompt-form input {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+/* Styles the submit button in the custom prompt form */
+.custom-prompt-form button {
+  display: block;
+  background-color: #8464b6;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.map-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.feed-container {
+  width: 50%;
+  float: left;
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.feed-container .card {
+  margin-bottom: 20px;
+}
+
+.map-wrapper {
+  width: 50%;
+  float: right;
+  position: relative;
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: #ede7f5;
+  margin: 0px 0 20px 0px;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.filter-item {
+  flex-basis: calc(25% - 10px);
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+
+.checkbox-group div {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.checkbox-group label {
+  margin-left: 5px;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.filter-button {
+  width: 130px;
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: #8464b6;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.filter-button:hover {
+  background-color: #674f95;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.card-header {
+  text-align: center;
+  position: relative;
+  padding: 0px;
+}
+
+.card-image,
+.popup-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-body {
+  flex-grow: 1;
+}
+
+.card-title {
+  margin-bottom: 0;
+}
+
+.card-pet-situation {
+  display: inline-block;
+  padding: 4px 8px;
+  font-weight: bold;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.card-pet-situation.found {
+  background-color: #2793e2;
+  color: white;
+}
+
+.card-pet-situation.lost {
+  background-color: #fd678d;
+  color: white;
+}
+
+.card-date {
+  font-size: 14px;
+  color: #888;
+}
+
+.card-description {
+  font-size: 14px;
 }

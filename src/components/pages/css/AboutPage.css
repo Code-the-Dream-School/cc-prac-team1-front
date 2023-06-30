@@ -1,0 +1,132 @@
+.first-row {
+  background-color: black;
+  color: white;
+  padding: 100px 50px;
+  margin-top: 30px;
+}
+
+.first-row h1 {
+  font-size: 64px;
+}
+.first-row p {
+  font-size: 24px;
+  padding-top: 50px;
+}
+
+.second-row {
+  text-align: center;
+  padding-inline-start: 170px;
+  padding-inline-end: 170px;
+  padding-top: 40px;
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+.second-row h2 {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.third-row {
+  text-align: initial;
+  padding-inline-start: 50px;
+  padding-inline-end: 50px;
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+.fourth-row {
+  background-color: #f4f2f3;
+  text-align: initial;
+
+  padding-inline-end: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+.fourth-row h2 {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: initial;
+}
+
+.fifth-row {
+  margin-top: 70px;
+  margin-bottom: 70px;
+  padding-inline-start: 50px;
+  padding-inline-end: 50px;
+}
+
+.sixth-row h2 {
+  color: white;
+  font-weight: bold;
+}
+
+.sixth-row {
+  background-color: #8464b6;
+  color: white;
+  text-align: center;
+  padding-inline-start: 170px;
+  padding-inline-end: 170px;
+  padding-top: 60px;
+  margin-top: 70px;
+}
+
+.last-row {
+  background-color: black;
+  padding: 70px;
+}
+
+.first-about-button {
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  width: 150px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 35%;
+}
+
+.first-about-button:hover {
+  background-color: #8464b6;
+  border: 2px solid rgb(45, 45, 45);
+  box-shadow: 5px 5px 5px #00000042;
+}
+
+.second-about-button {
+  margin-inline-start: auto;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  width: 150px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.second-about-button:hover {
+  background-color: #8464b6;
+  border: 2px solid rgb(45, 45, 45);
+  box-shadow: 5px 5px 5px #00000042;
+}
+.third-about-button {
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  width: 150px;
+  margin-top: 50px;
+  margin-bottom: 90px;
+  margin-inline: auto;
+}
+
+.third-about-button:hover {
+  background-color: #8464b6;
+  border: 2px solid rgb(45, 45, 45);
+  box-shadow: 5px 5px 5px #00000042;
+}
+
+.purp-header {
+  color: #8464b6;
+  font-weight: bold;
+}
