@@ -23,15 +23,15 @@ function App() {
       <NavBar isLoggedIn={isLoggedIn} />
       <div>
         <Routes>
-          <Route path="/" element={<HomePage/>}/>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/dashboard" element={<DashBoard />} />
-        <Route path="/map" element={<MapComponent />} />
-        <Route path="/add-pet" element={<LostOrFoundChoice />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/profile-edit" element={<EditProfile />} />
-        <Route path="/about" element={<AboutPage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/map" element={<MapComponent />} />
+          <Route path="/add-pet" element={<LostOrFoundChoice />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile-edit" element={<EditProfile />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </div>
     </div>
