@@ -6,7 +6,8 @@ import personFillIcon from "../../creative-assets/person-fill.svg";
 import addPetIcon from "../../creative-assets/add-pet-icon.svg";
 import "../pages/css/NavBar.css";
 
-const NavBar = ({ isLoggedIn }) => {
+const NavBar = () => {
+  const isLoggedIn = !!localStorage.getItem("token");
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
