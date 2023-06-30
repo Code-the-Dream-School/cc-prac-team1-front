@@ -1,6 +1,6 @@
-const FoundIcon = ({ navigation }) => {
+const FoundIcon = () => {
   return (
-    <button className="found-button" onClick={() => navigation("/addfoundpet")}>
+    <button className="found-button">
       <svg
         width="150"
         height="150"
