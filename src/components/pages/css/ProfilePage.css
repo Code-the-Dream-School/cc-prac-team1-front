@@ -1,59 +1,99 @@
-.profile-h1 {
-  margin-top: 150px;
-  margin-left: 20px;
-  font-size: 40px;
-}
-.user-info-container {
-  margin-top: 100px;
-  text-align: center;
-  margin-left: 10px;
-}
-.user-info {
-  float: left;
-}
-.profile-update {
-  background-color: black;
-  color: white;
-  border-radius: 20px;
-  width: 150px;
-  margin-bottom: 90px;
-  /* transition: transform 0.2s ease-in-out; */
+.profile-page-container {
+  display: flex;
+  justify-content: space-between;
 }
 
-.profile-update:hover {
-  background-color: #8464b6;
+.profile-user {
+  width: 30%;
 }
-.profile-container {
-  display: block;
-  border: 0px solid rgb(219, 215, 215);
-  box-shadow: 9px 9px 5px #00000054;
-  /* border-radius: 15px; */
-  width: 700px;
-  float: right;
+
+.profile-table {
+  width: 70%;
+}
+
+.profile-header,
+.profile-user,
+.profile-table {
+  margin-top: 50px;
+}
+
+.icon-large {
+  font-size: 120px;
+  margin-right: 80px;
+}
+
+.user-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 80px;
+}
+
+.table-header {
+  color: white !important;
+  background-color: #8464b6 !important; /* Change this color to your desired background color */
+}
+
+ul {
+  list-style-type: none !important;
+  padding-left: 0;
+}
+
+.user-info-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pet-remove {
+  margin-bottom: 10px;
+}
+
+.profile-h2 {
+  margin-bottom: 10px;
+}
+
+.profile-update {
+  margin-left: 50px;
+}
+
+input {
+  height: 35px;
+  border-radius: 3px;
+  border: solid 1px #000000;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.pagination-link {
+  display: inline-block;
+  padding: 0.5rem;
+  margin: 0.2rem;
+  border-radius: 3px;
+  background-color: #f0f0f0;
+  color: #333;
+  cursor: pointer;
+}
+
+.pagination-link-active {
+  padding-top: 10px;
+  margin-left: 10px;
   margin-right: 10px;
 }
-.profile-h2 {
-  font-size: 20px;
-  margin-left: -12px;
+
+.pagination-link-disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 
-.categories-row {
-  background-color: #8464b6;
-  padding: 15px;
-  margin-bottom: 40px;
+.pagination-link:hover {
+  background-color: #ddd;
+}
 
-  font-weight: bold;
-  color: white;
-  text-align: center;
-}
-.pet-details-row {
-  margin-bottom: 20px;
-}
-.pet-name {
-  text-align: center;
-  margin-top: 20px;
-}
-.pet-info ul {
-  list-style: none;
-  padding-left: 10px;
+.user-details input {
+  padding: 10px;
 }

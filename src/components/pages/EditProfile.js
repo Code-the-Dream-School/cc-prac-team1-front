@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from "react";
+import "./css/EditProfile.css";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   Row,
@@ -9,10 +13,6 @@ import {
   Input,
   Col,
 } from "reactstrap";
-import "./css/EditProfile.css";
-import axios from "axios";
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 function EditProfile() {
   const { id } = useParams();
@@ -186,7 +186,10 @@ function EditProfile() {
               </FormGroup>
             </Col>
           </Row>
-          <Button type="submit" className="edit-profile-update">
+          <Button
+            type="submit"
+            className="edit-profile-update"
+          >
             Update
           </Button>
         </Form>
