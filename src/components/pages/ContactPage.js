@@ -78,27 +78,6 @@ function ContactPage() {
           experiences, and spread the word about missing pets. Let's work
           together to create a strong and compassionate community.
         </p>
-
-        {/* <div>
-          <a
-            href="https://www.facebook.com/"
-            target="_blank"
-            rel="noreferrer"
-            class="bi bi-facebook"
-          ></a>
-          <a
-            href="https://www.instagram.com/"
-            target="_blank"
-            rel="noreferrer"
-            class="bi bi-instagram"
-          ></a>
-          <a
-            href="https://twitter.com/i/flow/login?redirect_after_login=%2F%3Flang%3Den"
-            target="_blank"
-            rel="noreferrer"
-            class="bi bi-twitter"
-          ></a>
-        </div> */}
       </Row>
 
       <Row className="footer">

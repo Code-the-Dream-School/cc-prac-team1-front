@@ -76,7 +76,35 @@
 
 .last-row {
   background-color: black;
-  padding: 70px;
+  padding: 30px 15px;
+}
+.last-row img {
+  width: 250px;
+  height: 75px;
+}
+.last-row div {
+  text-align: center;
+}
+
+.last-row a {
+  color: white;
+  padding: 0px 20px;
+}
+.copyright {
+  float: left;
+  color: white;
+  margin-top: 35px;
+  margin-left: 40px;
+  font-size: 18px;
+}
+.network-icons {
+  text-align: center;
+  margin-left: 150px;
+  font-size: 30px;
+}
+.links {
+  font-size: 20px;
+  float: right;
 }
 
 .first-about-button {
