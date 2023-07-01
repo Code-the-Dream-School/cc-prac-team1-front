@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Container,
   Row,
@@ -10,8 +10,57 @@ import {
   Col,
 } from "reactstrap";
 import "./css/EditProfile.css";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function EditProfile() {
+  const { id } = useParams();
+  const goToProfile = useNavigate();
+  const [petInfo, setPetInfo] = useState({
+    petName: "",
+    petDate: "",
+    petBreed: "",
+    petColor: "",
+    petGender: "",
+    petLocation: "",
+    petSituation: "",
+  });
+  const onInputChange = (e) => {
+    setPetInfo({ ...petInfo, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    await axios.patch(`http://localhost:5005/api/v1/pet/${id}`, petInfo);
+    goToProfile("/profile");
+  };
+
+  const loadInfo = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5005/api/v1/pets/${id}`
+      );
+      const { pet } = response.data;
+      setPetInfo({
+        petName: pet.petName,
+        petDate: pet.petDate,
+        petBreed: pet.petBreed,
+        petColor: pet.petColor,
+        petGender: pet.petGender,
+        petLocation: pet.petLocation,
+        // .toString(),
+        petSituation: pet.petSituation,
+      });
+    } catch (error) {
+      console.log("Error fetching pet information", error);
+    }
+  };
+
+  useEffect(() => {
+    loadInfo();
+  });
+
   return (
     <>
       <img
@@ -23,20 +72,36 @@ function EditProfile() {
       />
 
       <Container className="edit-profile-container">
-        <h3 className="pet-info-h3">Pet Information</h3>
+        <h3 className="pet-info-h3">Pet Information </h3>
 
-        <Form className="edit-pet-info-form">
+        <Form
+          className="edit-pet-info-form"
+          id="edit-pet-info-form"
+          onSubmit={(e) => onSubmit(e)}
+        >
           <Row>
             <Col md={6}>
               <FormGroup>
                 <Label htmlFor="petName">Pet Name</Label>
-                <Input type="text" id="petName" />
+                <Input
+                  type="text"
+                  id="petName"
+                  name="petName"
+                  value={petInfo?.petName || ""}
+                  onChange={(e) => onInputChange(e)}
+                />
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
-                <Label htmlFor="status">Lost or found?</Label>
-                <Input type="text" id="status" />
+                <Label htmlFor="status">Status</Label>
+                <Input
+                  type="text"
+                  id="petSituation"
+                  name="petSituation"
+                  value={petInfo?.petSituation || ""}
+                  onChange={(e) => onInputChange(e)}
+                />
               </FormGroup>
             </Col>
           </Row>
@@ -44,13 +109,25 @@ function EditProfile() {
             <Col md={6}>
               <FormGroup>
                 <Label htmlFor="animalType">Animal type</Label>
-                <Input type="text" id="animalType" />
+                <Input
+                  type="text"
+                  id="animalType"
+                  name="animalType"
+                  value={petInfo?.animalType || ""}
+                  onChange={(e) => onInputChange(e)}
+                />
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
                 <Label htmlFor="breed">Breed</Label>
-                <Input type="text" id="breed" />
+                <Input
+                  type="text"
+                  id="petBreed"
+                  name="petBreed"
+                  value={petInfo?.petBreed || ""}
+                  onChange={(e) => onInputChange(e)}
+                />
               </FormGroup>
             </Col>
           </Row>
@@ -59,13 +136,25 @@ function EditProfile() {
             <Col md={6}>
               <FormGroup>
                 <Label htmlFor="color">Color</Label>
-                <Input type="text" id="color" />
+                <Input
+                  type="text"
+                  id="petColor"
+                  name="petColor"
+                  value={petInfo?.petColor || ""}
+                  onChange={(e) => onInputChange(e)}
+                />
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
                 <Label htmlFor="gender">Gender</Label>
-                <Input type="text" id="gender" />
+                <Input
+                  type="text"
+                  id="petGender"
+                  name="petGender"
+                  value={petInfo?.petGender || ""}
+                  onChange={(e) => onInputChange(e)}
+                />
               </FormGroup>
             </Col>
           </Row>
@@ -73,34 +162,33 @@ function EditProfile() {
             <Col md={6}>
               <FormGroup>
                 <Label htmlFor="location">Location (Zip Code)</Label>
-                <Input type="text" id="location" />
+                <Input
+                  type="text"
+                  id="petLocation"
+                  name="petLocation"
+                  autoComplete="postal-code"
+                  // maxLength="5"
+                  value={petInfo?.petLocation || ""}
+                  onChange={(e) => onInputChange(e)}
+                />
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
-                <Label htmlFor="dateFound">Date found</Label>
-                <Input type="date" id="dateFound" />
+                <Label htmlFor="dateFound">Date</Label>
+                <Input
+                  type="date"
+                  id="petDate"
+                  name="petDate"
+                  value={petInfo?.petDate || ""}
+                  onChange={(e) => onInputChange(e)}
+                />
               </FormGroup>
             </Col>
           </Row>
-        </Form>
-        <h3 className="contact-info-h3">Contact Information</h3>
-        <Form className="edit-contact-info-form">
-          <Row>
-            <Col md={6}>
-              <FormGroup>
-                <Label htmlFor="userEmail">Email</Label>
-                <Input type="email" name="email" id="userEmail" />
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label htmlFor="userPhoneNumber">Phone Number</Label>
-                <Input type="tel" id="userPhoneNumber" />
-              </FormGroup>
-            </Col>
-          </Row>
-          <Button className="edit-profile-update">Update</Button>
+          <Button type="submit" className="edit-profile-update">
+            Update
+          </Button>
         </Form>
       </Container>
     </>

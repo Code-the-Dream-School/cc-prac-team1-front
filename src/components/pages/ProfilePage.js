@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./css/ProfilePage.css";
 import { Button, Container, Col, Row } from "reactstrap";
 import axios from "axios";
+// import "bootstrap-icons/font/bootstrap-icons.css";
 
 function ProfilePage() {
   const [user, setUser] = useState(null);
@@ -12,6 +13,7 @@ function ProfilePage() {
     try {
       const response = await axios.get("http://localhost:5005/api/v1/pets");
       setUser(response.data[0].contact);
+      console.log(response.data);
       setPetDetails(response.data);
     } catch (error) {
       console.log(
@@ -25,6 +27,21 @@ function ProfilePage() {
   }, []);
 
   const goToEditProfile = useNavigate();
+
+  const editPet = (pet) => {
+    goToEditProfile(`/profile-edit/${pet._id}`);
+  };
+
+  const removePet = async (petId) => {
+    try {
+      await axios.delete(`http://localhost:5005/api/v1/pet/${petId}`);
+      setUser((prevPets) =>
+        prevPets.filter((pet) => pet.contact._id !== petId)
+      );
+    } catch (error) {
+      console.log("Error deleting pet", error);
+    }
+  };
 
   return (
     <>
@@ -70,7 +87,9 @@ function ProfilePage() {
               <Col className="pet-info" md={3}>
                 <ul>
                   <li>Type: {pet.animalType}</li>
-                  <li>Status: {pet.petSituation}</li>
+                  <li>
+                    {pet.petSituation}: {pet.petDate}
+                  </li>
                   <li>Breed: {pet.petBreed}</li>
                   <li>Color: {pet.petColor}</li>
                   <li>Gender: {pet.petGender}</li>
@@ -81,16 +100,13 @@ function ProfilePage() {
               <Col md={2}>
                 <Button
                   type="submit"
-                  // onClick={() => removePet(pet._id)}
+                  onClick={() => removePet(pet._id)}
                   className="pet-remove"
                 >
                   Remove
                 </Button>
                 <br />
-                <Button
-                  className="pet-edit"
-                  onClick={() => goToEditProfile("/profile-edit")}
-                >
+                <Button className="pet-edit" onClick={() => editPet(pet)}>
                   Edit
                 </Button>
               </Col>

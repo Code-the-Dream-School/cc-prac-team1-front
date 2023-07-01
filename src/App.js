@@ -1,6 +1,6 @@
 // Imports - Dependencies
 import React from "react";
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 
 // Imports - Pages
 import LoginPage from "./components/pages/LoginPage";
@@ -18,12 +18,11 @@ import HomePage from "./components/pages/HomePage";
 
 // Defines the routes for the application
 function App() {
-
   return (
     <div>
-        <NavBar/>
-        <Routes>
-          <Route path="/" element={<HomePage/>}/>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/dashboard" element={<MapComponent />} />
@@ -31,10 +30,10 @@ function App() {
         <Route path="/addfoundpet" element={<AddFoundPet />} />
         <Route path="/addlostpet" element={<AddLostPet />} />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/profile-edit" element={<EditProfile />} />
+        <Route path="/profile-edit/:id" element={<EditProfile />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/contact" element={<ContactPage/>} />
-        </Routes>
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
     </div>
   );
 }
