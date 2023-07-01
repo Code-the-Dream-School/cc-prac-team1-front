@@ -1,136 +1,150 @@
-
 .contact {
-    flex-shrink: 0;
-    background: black;
-    padding: 100px 50px 80px;
+  background: black;
+  padding: 100px 50px;
 }
 
 .contact h1 {
-    color: #FEFEFE;
-    font-size: 64px;
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+  color: white;
+  font-size: 64px;
+  font-weight: bold;
 }
 
 .contact p {
-    color: #FEFEFE;
-    font-size: 24px;
-    font-family: Open Sans;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  color: white;
+  font-size: 24px;
+  padding-top: 50px;
 }
 
 .general {
-    padding: 100px 50px;
-    color: red;
+  padding-inline-start: 100px;
+  padding-inline-end: 100px;
+  padding-top: 40px;
+  margin-top: 70px;
+  margin-bottom: 70px;
 }
 
 .general-title {
-    padding: 1px 85px;
-    color: #8464B6;
-    text-align: left;
-    font-size: 48px;
-    font-family: Montserrat;
-    font-weight: bolder;
+  padding: 1px 85px;
+  color: #8464b6;
+  font-weight: bold;
 }
 
 .general p {
-    color: black;
-    padding: 10px 90px;
+  color: black;
+  padding: 10px 90px;
+}
+.general a {
+  color: black;
+}
+.general b {
+  line-height: 35px;
+}
+
+.column-section {
+  text-align: left;
 }
 
 .support {
-    background-color: #8464B6;
-    padding: 20px 40px;
-    color: white;
+  background-color: #8464b6;
+  padding: 20px 40px 75px 40px;
+  color: white;
+  padding-inline-start: 50px;
+  padding-inline-end: 50px;
 }
 
 .support-title {
-    color: white;
-    font-weight: 1000;
-    text-align: center;
-    font-size: 48px;
-    font-family: Montserrat;
-    font-style: normal;
-    line-height: normal;
+  padding: 20px;
+  color: white;
+  font-weight: bold;
 }
 
-.support p {
-    display: flex;
-    width: 500px;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0px 0px 0px 20px; 
-    font-size: 22px;
+.support a {
+  color: white;
 }
 
-.support b, a {
-    font-size: 22px;
-    padding: 0px 0px 0px 20px; 
+.support b {
+  line-height: 35px;
 }
 
 .partner {
-    background: #F2F2F2;
-    padding: 20px 40px;
-    color: black;
+  background: #f2f2f2;
+  padding: 20px 40px 75px 40px;
+  color: black;
+  padding-inline-start: 50px;
+  padding-inline-end: 50px;
 }
 
 .partner-title {
-    color: black;
-    font-weight: 1000;
-    text-align: left;
-    font-size: 48px;
-    font-family: Montserrat;
-    font-style: normal;
-    line-height: normal;
+  color: black;
+  padding: 20px;
+  font-weight: bold;
 }
 
-.partner p {
-    display: flex;
-    width: 500px;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0px 0px 0px 0px;
+.partner a {
+  color: black;
 }
 
-.partner b, a {
-    font-size: 22px;
-    padding: 0px 2px 1px 1px; 
+.partner b {
+  line-height: 35px;
 }
 
 .connect {
-    padding: 50px 40px 1px 0px;
-    color: black;
+  color: black;
+  padding-inline-start: 100px;
+  padding-inline-end: 100px;
+  padding-top: 40px;
+  margin-top: 70px;
+  margin-bottom: 90px;
 }
 
 .connect-title {
-    color: #8464B6;
-    text-align: center;
-    font-size: 48px;
-    font-family: Montserrat;
-    font-weight: bolder;
+  color: #8464b6;
+  text-align: center;
+  font-size: 48px;
+  margin-top: 30px;
+  font-weight: bold;
 }
 
 .connect p {
-    color: black;
-    padding: 10px 90px;
-    font-size: 25px;
+  color: black;
+  padding: 10px 90px;
+  margin-top: 20px;
 }
 
-.connect div {
-    font-size: 60px;
-    text-align: center;
-    padding-bottom: 50px;
-}
-
-.connect i {
-    padding: 50px;
+.connect a {
+  color: black;
+  padding: 50px;
 }
 
 .footer {
-    background-color: black;
-    padding: 100px 50px;
+  background-color: black;
+  padding: 30px 15px;
+}
+.footer img {
+  width: 250px;
+  height: 75px;
+}
+.footer div {
+  text-align: center;
+}
+
+.footer a {
+  color: white;
+  padding: 0px 20px;
+}
+.copyright {
+  float: left;
+  color: white;
+  margin-top: 35px;
+  margin-left: 40px;
+  font-size: 18px;
+}
+.network-icons {
+  text-align: center;
+  margin-left: 150px;
+  font-size: 30px;
+}
+.links {
+  font-size: 20px;
+  float: right;
 }
