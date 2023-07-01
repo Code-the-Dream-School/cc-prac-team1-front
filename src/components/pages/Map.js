@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -16,7 +17,9 @@ const MapComponent = () => {
   const [petsPerPage] = useState(12); // Number of pets to show per page
   const [totalPages, setTotalPages] = useState(1); // Total number of pages
   const [totalPets, setTotalPets] = useState(-1);
+  const [showFilter, setShowFilter] = useState(true);
   const [showPagination, setShowPagination] = useState(false);
+  const navigate = useNavigate();
 
   const mapRef = useRef(null); // Ref to store the map instance
 
@@ -184,111 +187,130 @@ const MapComponent = () => {
     }
   }, [userProvidedZipCode]);
 
+  const navigateToAddPet = () => {
+    navigate("/add-pet");
+  };
+
   return (
     <div className="map-container">
       <div className="feed-container">
-        <div className="filter-container">
-          <div className="filter-row">
-            <div className="filter-item">
-              <label htmlFor="situationFilter">Pet Situation:</label>
-              <div className="checkbox-group">
-                <div>
-                  <input
-                    type="checkbox"
-                    id="situationFilter1"
-                    value="found"
-                  />
-                  <label htmlFor="situationFilter1">Found</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    id="situationFilter2"
-                    value="lost"
-                  />
-                  <label htmlFor="situationFilter2">Lost</label>
-                </div>
-              </div>
-            </div>
-            <div className="filter-item">
-              <label htmlFor="genderFilter">Pet Gender:</label>
-              <div className="checkbox-group">
-                <div>
-                  <input
-                    type="checkbox"
-                    id="genderFilter1"
-                    value="male"
-                  />
-                  <label htmlFor="genderFilter1">Male</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    id="genderFilter2"
-                    value="female"
-                  />
-                  <label htmlFor="genderFilter2">Female</label>
+        <button
+          className="toggle-filter-button"
+          onClick={() => setShowFilter(!showFilter)}
+        >
+          <i class="bi bi-filter"></i>
+          {showFilter ? " Hide Filter" : " Show Filter"}
+        </button>
+        <button
+          className="navigate-button-feed"
+          onClick={navigateToAddPet}
+        >
+          <i class="bi bi-plus-lg"></i> Add a pet
+        </button>
+        {showFilter && (
+          <div className="filter-container">
+            <div className="filter-row">
+              <div className="filter-item">
+                <label htmlFor="situationFilter">Pet Situation:</label>
+                <div className="checkbox-group">
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="situationFilter1"
+                      value="found"
+                    />
+                    <label htmlFor="situationFilter1">Found</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="situationFilter2"
+                      value="lost"
+                    />
+                    <label htmlFor="situationFilter2">Lost</label>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="filter-item">
-              <label htmlFor="dateFilter">Pet Date:</label>
-              <div className="calendar-group">
-                <input
-                  type="date"
-                  id="dateFilter"
-                />
+              <div className="filter-item">
+                <label htmlFor="genderFilter">Pet Gender:</label>
+                <div className="checkbox-group">
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="genderFilter1"
+                      value="male"
+                    />
+                    <label htmlFor="genderFilter1">Male</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="genderFilter2"
+                      value="female"
+                    />
+                    <label htmlFor="genderFilter2">Female</label>
+                  </div>
+                </div>
               </div>
-            </div>
+              <div className="filter-item">
+                <label htmlFor="dateFilter">Pet Date:</label>
+                <div className="calendar-group">
+                  <input
+                    type="date"
+                    id="dateFilter"
+                  />
+                </div>
+              </div>
 
-            <div className="filter-item">
-              <label htmlFor="colorFilter">Pet Color:</label>
-              <div className="input-group">
-                <input
-                  type="text"
-                  id="nameFilter"
-                  placeholder="Enter pet's color"
-                />
+              <div className="filter-item">
+                <label htmlFor="colorFilter">Pet Color:</label>
+                <div className="input-group">
+                  <input
+                    type="text"
+                    id="nameFilter"
+                    placeholder="Enter pet's color"
+                  />
+                </div>
               </div>
+            </div>
+            <div className="filter-row">
+              <div className="filter-item">
+                <label htmlFor="nameFilter">Pet Name:</label>
+                <div className="input-group">
+                  <input
+                    type="text"
+                    id="nameFilter"
+                    placeholder="Enter pet name"
+                  />
+                </div>
+              </div>
+              <div className="filter-item">
+                <label htmlFor="typeFilter">Animal Type:</label>
+                <div className="input-group">
+                  <input
+                    type="text"
+                    id="typeFilter"
+                    placeholder="Enter animal type"
+                  />
+                </div>
+              </div>
+              <div className="filter-item">
+                <label htmlFor="breedFilter">Pet Breed:</label>
+                <div className="input-group">
+                  <input
+                    type="text"
+                    id="breedFilter"
+                    placeholder="Enter pet breed"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="filter-buttons">
+              <button className="filter-button">Filter</button>
+              <button className="filter-button">Clear Filters</button>
             </div>
           </div>
-          <div className="filter-row">
-            <div className="filter-item">
-              <label htmlFor="nameFilter">Pet Name:</label>
-              <div className="input-group">
-                <input
-                  type="text"
-                  id="nameFilter"
-                  placeholder="Enter pet name"
-                />
-              </div>
-            </div>
-            <div className="filter-item">
-              <label htmlFor="typeFilter">Animal Type:</label>
-              <div className="input-group">
-                <input
-                  type="text"
-                  id="typeFilter"
-                  placeholder="Enter animal type"
-                />
-              </div>
-            </div>
-            <div className="filter-item">
-              <label htmlFor="breedFilter">Pet Breed:</label>
-              <div className="input-group">
-                <input
-                  type="text"
-                  id="breedFilter"
-                  placeholder="Enter pet breed"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="filter-buttons">
-            <button className="filter-button">Filter</button>
-            <button className="filter-button">Clear Filters</button>
-          </div>
-        </div>
+        )}
         <div className="image-container">
           {showGif && (
             <img

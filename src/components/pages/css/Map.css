@@ -114,7 +114,14 @@ i.bi-geo-alt-fill {
   flex-direction: column;
   padding: 10px;
   background-color: #ede7f5;
-  margin: 0px 0 20px 0px;
+  margin: 0px 0 5px 0px;
+  transition: height 0.3s ease;
+  height: auto;
+  overflow: hidden;
+}
+
+.filter-container.hidden {
+  height: 0;
 }
 
 .filter-row {
@@ -150,7 +157,19 @@ i.bi-geo-alt-fill {
   margin-top: 10px;
 }
 
-.filter-button {
+.toggle-filter-button {
+  background-color: black !important;
+  width: 150px !important;
+}
+
+.toggle-filter-button,
+.navigate-button-feed {
+  margin-bottom: 20px !important;
+}
+
+.filter-button,
+.toggle-filter-button,
+.navigate-button-feed {
   width: 130px;
   margin: 0 10px;
   padding: 10px 20px;
@@ -161,7 +180,8 @@ i.bi-geo-alt-fill {
   cursor: pointer;
 }
 
-.filter-button:hover {
+.filter-button:hover,
+.navigate-button-feed:hover {
   background-color: #674f95;
 }
 
@@ -241,4 +261,8 @@ i.bi-geo-alt-fill {
 .page-number {
   font-weight: bold;
   margin: 0 10px;
+}
+
+.total-pets {
+  margin-top: 10px;
 }

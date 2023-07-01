@@ -73,20 +73,6 @@ const NavBar = () => {
           >
             Dashboard
           </Nav.Link>
-          <Nav.Link
-            as={Link}
-            to="/add-pet"
-            className="nav-link"
-          >
-            <button className="navbar-add-button">
-              <img
-                src={addPetIcon}
-                alt="Add Pet"
-                className="add-pet-icon"
-              />
-              Add Pet
-            </button>
-          </Nav.Link>
           <Dropdown
             align="end"
             show={showProfileMenu}
