@@ -13,6 +13,7 @@ import NavBar from "./components/elements/NavBar";
 import AboutPage from "./components/pages/AboutPage";
 import ContactPage from "./components/pages/ContactPage";
 import HomePage from "./components/pages/HomePage";
+import PetPage from "./components/pages/PetPage";
 
 // Defines the routes for the application
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path="/profile-edit" element={<EditProfile />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/pet-page" element={<PetPage/>} />
         </Routes>
       </div>
     </div>
