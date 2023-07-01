@@ -1,6 +1,20 @@
-const LostIcon = ({ navigation }) => {
+import { useState } from "react";
+import AddFoundPet from '../components/pages/AddPet'
+
+
+const LostIcon = () => {
+
+    const [addPet, setAddPet] = useState(false)
+
+  const handleAddPet = ()=>{
+    setAddPet(true);
+  }
+  
+
   return (
-    <button className="lost-button" onClick={() => navigation("/addlostpet")}>
+    <div>
+      {!addPet && (
+    <button className="lost-button" onClick={handleAddPet}>
       <svg
         width="150"
         height="150"
@@ -14,7 +28,10 @@ const LostIcon = ({ navigation }) => {
         />
       </svg>
       Lost Pet
-    </button>
+    </button>)}
+    {addPet && (<AddFoundPet/>)}
+   
+    </div>
   );
 };
 

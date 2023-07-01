@@ -5,20 +5,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./css/Map.css";
 import axios from "axios";
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardText,
-  Button,
-} from "reactstrap";
+import { Row, Col, Card, CardBody } from "reactstrap";
+import loadingImage from "../../creative-assets/cat-astronaut.gif";
 
 const MapComponent = () => {
-  
-
   const [userProvidedZipCode, setUserProvidedZipCode] = useState(""); // Initializes state variables for the user-provided ZIP code
   const [showPrompt, setShowPrompt] = useState(true); // Initializes state variables to control the visibility of the prompt
+  const [showGif, setShowGif] = useState(true); // Initializes state variable to control the visibility of the gif
 
   const mapRef = useRef(null); // Ref to store the map instance
 
@@ -30,11 +23,13 @@ const MapComponent = () => {
         `https://www.mapquestapi.com/geocoding/v1/address?key=${process.env.REACT_APP_MAPQUEST_KEY}&location=${zipcode}`
       );
 
-      // Extracts the latitude and longitude from the response data
+      // Extracts the latitude, longitude, city, and state from the response data
       const { lat, lng } = response.data.results[0].locations[0].latLng;
+      const { adminArea5: city, adminArea3: state } =
+        response.data.results[0].locations[0];
 
-      // Returns an object containing the latitude and longitude
-      return { lat, lng };
+      // Returns an object containing the latitude, longitude, city, and state
+      return { lat, lng, city, state };
     } catch (error) {
       // Throws an error if there's an issue with geocoding the ZIP code
       throw new Error("Error geocoding ZIP code:", error);
@@ -68,7 +63,10 @@ const MapComponent = () => {
     const popupContent = `
       <div class="popup-container">
         <div class="popup-image">
-          <!-- <img src="path_to_image" alt="Pet Image" /> -->
+          <img
+            src=petInfo.image
+            alt="Pet_Image"
+          />
         </div>
         <div class="popup-info">
           <h3>${
@@ -112,6 +110,7 @@ const MapComponent = () => {
   }, []);
 
   const [petList, setPetList] = useState([]);
+
   // Fetches pet data and geocode ZIP code when user provides a ZIP code
   useEffect(() => {
     if (userProvidedZipCode) {
@@ -131,6 +130,7 @@ const MapComponent = () => {
                   console.error("Error geocoding pet's ZIP code:", error);
                 }
               });
+              setShowGif(false);
             })
             .catch((error) => {
               console.error("Error fetching pets:", error);
@@ -142,8 +142,6 @@ const MapComponent = () => {
     }
   }, [userProvidedZipCode]);
 
-
-
   // Shows prompt if ZIP code is not provided
   useEffect(() => {
     if (!userProvidedZipCode) {
@@ -153,80 +151,159 @@ const MapComponent = () => {
 
   return (
     <div className="map-container">
-      <div className="feed-container">{
-        <>
-        <button
-          type="button"
-          className="edit-filter-button"
-        >
-          {" "}
-          Show Filters{" "}
-        </button>
-        <button
-          type="button"
-          className="edit-addPet-button"
-        >
-          {" "}
-          Add Pet{" "}
-        </button>
-        <ul>
-          {petList.map((item) => {
-            return (
-              <li
-                key={item.id}
-                style={{ listStyleType: "none" }}
-              >
-                {" "}
-                <br />
-                <Card
-                  className="edit-dashboard-card-unit"
-                  style={{
-                    width: "18rem",
-                  }}
-                >
-                  <img
-                    className="edit-dashboard-image"
-                    alt="Sample"
-                    src={item.image}
+      <div className="feed-container">
+        <div className="filter-container">
+          <div className="filter-row">
+            <div className="filter-item">
+              <label htmlFor="situationFilter">Pet Situation:</label>
+              <div className="checkbox-group">
+                <div>
+                  <input
+                    type="checkbox"
+                    id="situationFilter1"
+                    value="found"
                   />
-                  <CardBody className="edit-cardBody-info-box">
-                    <div style={{ display: "flex", flexDirection: "row" }}>
-                      <CardTitle
-                        className="edit-petName"
-                        tag="h5"
-                      >
-                        {item.petName}
-                      </CardTitle>
-                      <br />
-                      <Button className="edit-status-for-pet">
-                        {item.petSituation}
-                      </Button>
-                    </div>
-                    <CardSubtitle
-                      className="edit-pet-location"
-                      // className="mb-2 text-muted"
-                      tag="h6"
-                    >
-                      {item.petLocation}
-                    </CardSubtitle>
-                    <CardText className="edit-missing-date">
-                      Missing since: {item.petDate}
-                    </CardText>
-                  </CardBody>
-                </Card>
-              </li>
-            );
-          })}
-        </ul>
-       
-      </>
-      /* Add code for the feed here */
-      }</div>
-      <div className="map-wrapper">
-        <div className="map-button-container">
-          <button className="map-button-primary">Button 1</button>
-          <button className="map-button-secondary">Button 2</button>
+                  <label htmlFor="situationFilter1">Found</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="situationFilter2"
+                    value="lost"
+                  />
+                  <label htmlFor="situationFilter2">Lost</label>
+                </div>
+              </div>
+            </div>
+            <div className="filter-item">
+              <label htmlFor="genderFilter">Pet Gender:</label>
+              <div className="checkbox-group">
+                <div>
+                  <input
+                    type="checkbox"
+                    id="genderFilter1"
+                    value="male"
+                  />
+                  <label htmlFor="genderFilter1">Male</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="genderFilter2"
+                    value="female"
+                  />
+                  <label htmlFor="genderFilter2">Female</label>
+                </div>
+              </div>
+            </div>
+            <div className="filter-item">
+              <label htmlFor="dateFilter">Pet Date:</label>
+              <div className="calendar-group">
+                <input
+                  type="date"
+                  id="dateFilter"
+                />
+              </div>
+            </div>
+
+            <div className="filter-item">
+              <label htmlFor="colorFilter">Pet Color:</label>
+              <div className="input-group">
+                <input
+                  type="text"
+                  id="nameFilter"
+                  placeholder="Enter pet's color"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="filter-row">
+            <div className="filter-item">
+              <label htmlFor="nameFilter">Pet Name:</label>
+              <div className="input-group">
+                <input
+                  type="text"
+                  id="nameFilter"
+                  placeholder="Enter pet name"
+                />
+              </div>
+            </div>
+            <div className="filter-item">
+              <label htmlFor="typeFilter">Animal Type:</label>
+              <div className="input-group">
+                <input
+                  type="text"
+                  id="typeFilter"
+                  placeholder="Enter animal type"
+                />
+              </div>
+            </div>
+            <div className="filter-item">
+              <label htmlFor="breedFilter">Pet Breed:</label>
+              <div className="input-group">
+                <input
+                  type="text"
+                  id="breedFilter"
+                  placeholder="Enter pet breed"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="filter-buttons">
+            <button className="filter-button">Filter</button>
+            <button className="filter-button">Clear Filters</button>
+          </div>
         </div>
+        <div className="image-container">
+          {showGif && (
+            <img
+              src={loadingImage}
+              alt="Loading"
+              className="loading-image"
+            />
+          )}
+        </div>
+        <Row>
+          {petList.map((pet, index) => (
+            <Col
+              md={6}
+              key={index}
+            >
+              <Card className="mb-3">
+                <div className="card-header">
+                  <img
+                    src={pet.petImage || "https://picsum.photos/id/237/300/200"}
+                    alt="Pet_Image"
+                    className="card-image"
+                  />
+                </div>
+                <CardBody>
+                  <div className="d-flex align-items-center justify-content-between mb-3">
+                    <div>
+                      <h5 className="card-title mb-0">
+                        {pet.petName || "Pet name not available"}
+                      </h5>
+                    </div>
+                    <div className={`card-pet-situation ${pet.petSituation}`}>
+                      {pet.petSituation === "found" ? "Found" : "Lost"}
+                    </div>
+                  </div>
+                  <p className="card-date mb-2">
+                    {pet.petSituation === "found"
+                      ? "Found on"
+                      : "Missing since"}{" "}
+                    {pet.petDate}
+                  </p>
+                  <p className="card-description">
+                    {pet.petDescription || "No description provided"}
+                  </p>
+                </CardBody>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </div>
+      <div className="map-wrapper">
         {showPrompt && (
           <div className="custom-prompt-overlay">
             <form

@@ -1,28 +1,42 @@
 import { Container } from "reactstrap";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import "./css/LostOrFoundChoice.css";
 import FoundIcon from  "../../creative-assets/found-icon.js"
 import LostIcon from "../../creative-assets/lost-icon"; 
+import AddFoundPet from "./AddPet";
 
 const LostOrFound = () => {
-  const goToAddPet = useNavigate();
+
+  const [showComponent, setShowComponent] = useState(true)
+   const handleIconClick = () =>{
+    setShowComponent(false)
+   }
 
   return (
-    <div className="container">
+
+    <div className="lostorfound-container">
+      {showComponent && (
     <Container>
       <p>Report a Lost of Found Pet</p>
       <div className="both-buttons">
       <div className="lost-button">
-      <LostIcon navigation ={goToAddPet}/>
+        
+      <button onClick={handleIconClick} ><LostIcon /></button>
+       
       </div>
       <div className="line"></div>
       <div className="found-button">
-       <FoundIcon  navigation ={goToAddPet} />
+        <button onClick={handleIconClick}>
+       <FoundIcon /></button>
       </div>
       </div>
-    </Container>
+    </Container>)}
+   {!showComponent && <AddFoundPet/>}
     </div>
   );
 };
+
+
+
 
 export default LostOrFound;
