@@ -1,5 +1,5 @@
 // Imports - Dependencies
-import React, { useState } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 // Imports - Pages
@@ -16,11 +16,9 @@ import HomePage from "./components/pages/HomePage";
 
 // Defines the routes for the application
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // change this value to false to see the nav bar for non-logged in users
-
   return (
     <div>
-      <NavBar isLoggedIn={isLoggedIn} />
+      <NavBar />
       <div>
         <Routes>
           <Route
@@ -36,7 +34,7 @@ function App() {
             element={<RegisterPage />}
           />
           <Route
-            path="/map"
+            path="/dashboard"
             element={<MapComponent />}
           />
           <Route
