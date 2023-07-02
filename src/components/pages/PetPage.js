@@ -89,7 +89,7 @@ function PetPage () {
             Posted By: 
         </th>
         <td>
-            Tracy Cano
+            John Smith
         </td>
     </tr>
     <tr>
@@ -97,7 +97,7 @@ function PetPage () {
             Email:
         </th>
         <td>
-            Tracy.Cano3.14@gmail.com
+            JohnSmith@gmail.com
         </td>
     </tr>
     <tr>
