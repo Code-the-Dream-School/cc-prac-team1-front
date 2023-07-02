@@ -33,8 +33,12 @@ const LoginPage = () => {
 
       // Handle successful login
       console.log(response.data);
+
+      // Extracts token from response and saves it to local storage
+      localStorage.setItem("token", response.data.token);
+
       // Redirect to the map page
-      navigate("/map");
+      navigate("/dashboard");
     } catch (error) {
       // Handle login error
       setError("Invalid credentials. Try again.");
