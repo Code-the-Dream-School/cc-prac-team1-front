@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Form, FormGroup, Label, Input, Col, Row } from "reactstrap";
 import FormSelect from "react-bootstrap/FormSelect";
+
 import { useState, useEffect } from "react";
 import "./css/LostAndFoundForm.css";
 import LostOrFound from "./LostOrFoundChoice";
@@ -26,21 +27,11 @@ const AddPet = () => {
 
   const [clickBack, setClickBack] = useState(false);
 
-  useEffect(() => {
-    const sendPetData = async () => {
-      try {
-        const response = await axios.post(
-          "http://localhost:5005/api/v1/pets",
-          postPetData
-        );
-        setResponse(response.data);
-      } catch (error) {
-        console.log("Error sending data:", error);
-      }
-    };
-
-    sendPetData();
-  }, [postPetData]);
+    useEffect(() => {
+    if (response) {
+      console.log("Response:", response);
+    }
+  }, [response]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -56,17 +47,13 @@ const AddPet = () => {
 
   const handleSubmitPet = async (e) => {
     e.preventDefault();
+
     try {
-      const response = await axios.post(
-        "http://localhost:5005/api/v1/pets",
-        postPetData
-      );
+      const response = await axios.post("http://localhost:5005/api/v1/pets", postPetData);
       setResponse(response.data);
     } catch (error) {
-      console.log("Error sending data:", error);
+      console.error(error);
     }
-
-    setPostData(" ");
   };
 
   return (
@@ -79,7 +66,6 @@ const AddPet = () => {
           </button>
 
           <Form onSubmit={handleSubmitPet}>
-            \
             <Row>
               <Col>
                 <FormGroup>
@@ -93,18 +79,7 @@ const AddPet = () => {
                   />
                 </FormGroup>
               </Col>
-              {/* <Form.Check
-                label="Lost Pet"
-                name="petSituation"
-                type="radio"
-                value={postPetData.petSituation}
-              />
-              <Form.Check
-                label="Found Pet"
-                name="petSituation"
-                type="radio"
-                value={postPetData.petSituation}
-              /> */}
+          
 
               <Col>
                 <FormGroup>
@@ -220,11 +195,10 @@ const AddPet = () => {
                 />
               </FormGroup>
             </Row>
-          </Form>
-
-          <button className="form-button" type="submit">
+             <button className="form-button" type="submit">
             Add Pet
           </button>
+          </Form>
         </Container>
       )}
       {clickBack && <LostOrFound />}

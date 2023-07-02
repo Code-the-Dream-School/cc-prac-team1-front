@@ -38,8 +38,9 @@
 
 .navbar-button {
   margin-top: 8px;
+  margin-left: 20px;
 }
-.navbar-add-button,
+
 .navbar-login-button {
   width: 120px;
   height: 40px;
@@ -49,7 +50,6 @@
   border: none;
   text-align: center;
   margin-right: 10px;
-  margin-left: 10px;
 }
 
 .add-pet-icon {
