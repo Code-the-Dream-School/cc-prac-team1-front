@@ -4,19 +4,14 @@ import { Row, Col, Table } from "reactstrap";
 function PetPage () {
     return (
         <>
-        <br/>
-        <br/>
+        {<PetPage />}
     <Row className="pet-name">
             Charlie
     </Row>
-    <br/>
-    <br/>
+    
     <Row className="pet-image">
         <img src = "https://images.pexels.com/photos/825949/pexels-photo-825949.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Pet"></img>
     </Row>
-    <br/>
-    <br/>
-    <br/>
       
 <Row>      
 <Col>

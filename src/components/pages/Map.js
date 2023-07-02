@@ -7,6 +7,7 @@ import "./css/Map.css";
 import axios from "axios";
 import { Row, Col, Card, CardBody } from "reactstrap";
 import loadingImage from "../../creative-assets/cat-astronaut.gif";
+import PetPage from "./PetPage";
 
 const MapComponent = () => {
   const [userProvidedZipCode, setUserProvidedZipCode] = useState(""); // Initializes state variables for the user-provided ZIP code
@@ -271,11 +272,18 @@ const MapComponent = () => {
             >
               <Card className="mb-3">
                 <div className="card-header">
-                  <img
+                <button onclick={<PetPage/>}>
+                <img
                     src={pet.petImage || "https://picsum.photos/id/237/300/200"}
                     alt="Pet_Image"
                     className="card-image"
                   />
+                </button>
+                  {/* <img
+                    src={pet.petImage || "https://picsum.photos/id/237/300/200"}
+                    alt="Pet_Image"
+                    className="card-image"
+                  /> */}
                 </div>
                 <CardBody>
                   <div className="d-flex align-items-center justify-content-between mb-3">
