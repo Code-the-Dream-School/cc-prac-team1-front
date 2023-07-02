@@ -9,6 +9,10 @@ import { Row, Col, Card, CardBody } from "reactstrap";
 import loadingImage from "../../creative-assets/cat-astronaut.gif";
 import PetPage from "./PetPage";
 
+// const handleClick () => {
+//   setPageComponent (<PetPage/>)
+// }
+
 const MapComponent = () => {
   const [userProvidedZipCode, setUserProvidedZipCode] = useState(""); // Initializes state variables for the user-provided ZIP code
   const [showPrompt, setShowPrompt] = useState(true); // Initializes state variables to control the visibility of the prompt
@@ -112,6 +116,8 @@ const MapComponent = () => {
 
   const [petList, setPetList] = useState([]);
 
+  
+
   // Fetches pet data and geocode ZIP code when user provides a ZIP code
   useEffect(() => {
     if (userProvidedZipCode) {
@@ -149,6 +155,8 @@ const MapComponent = () => {
       setShowPrompt(true);
     }
   }, [userProvidedZipCode]);
+
+  
 
   return (
     <div className="map-container">
@@ -272,18 +280,18 @@ const MapComponent = () => {
             >
               <Card className="mb-3">
                 <div className="card-header">
-                <button onclick={<PetPage/>}>
+                {/* <button onclick={handleClick}>
                 <img
                     src={pet.petImage || "https://picsum.photos/id/237/300/200"}
                     alt="Pet_Image"
                     className="card-image"
                   />
-                </button>
-                  {/* <img
+                </button> */}
+                  <img
                     src={pet.petImage || "https://picsum.photos/id/237/300/200"}
                     alt="Pet_Image"
                     className="card-image"
-                  /> */}
+                  />
                 </div>
                 <CardBody>
                   <div className="d-flex align-items-center justify-content-between mb-3">

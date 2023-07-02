@@ -4,7 +4,7 @@ import { Row, Col, Table } from "reactstrap";
 function PetPage () {
     return (
         <>
-        {<PetPage />}
+        {/* {<PetPage />} */}
     <Row className="pet-name">
             Charlie
     </Row>
