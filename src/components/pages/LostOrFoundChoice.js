@@ -3,11 +3,12 @@ import { useState } from "react";
 import "./css/LostOrFoundChoice.css";
 import FoundIcon from  "../../creative-assets/found-icon.js"
 import LostIcon from "../../creative-assets/lost-icon"; 
-import AddFoundPet from "./AddPet";
+import AddPet from "./AddPet";
 
 const LostOrFound = () => {
 
   const [showComponent, setShowComponent] = useState(true)
+
    const handleIconClick = () =>{
     setShowComponent(false)
    }
@@ -31,7 +32,7 @@ const LostOrFound = () => {
       </div>
       </div>
     </Container>)}
-   {!showComponent && <AddFoundPet/>}
+   {!showComponent && <AddPet/>}
     </div>
   );
 };
