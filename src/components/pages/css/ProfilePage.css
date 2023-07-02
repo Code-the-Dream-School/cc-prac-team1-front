@@ -97,3 +97,21 @@ input {
 .user-details input {
   padding: 10px;
 }
+
+.edit-actions button {
+  font-size: 25px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  color: black;
+  background: none;
+  border: none;
+}
+.edit-actions button:hover {
+  font-size: 25px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  color: #8464b6;
+  box-shadow: 5px 5px 5px #00000054;
+  background: none;
+  border: none;
+}
