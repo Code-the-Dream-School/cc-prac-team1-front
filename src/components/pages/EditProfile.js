@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./css/EditProfile.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import {
   Container,
   Row,
@@ -16,8 +15,7 @@ import {
 
 function EditProfile() {
   const { id } = useParams();
-  const goToProfile = useNavigate();
-  const [petInfo, setPetInfo] = useState({
+  const [petDetails, setPetDetails] = useState({
     petName: "",
     petDate: "",
     petBreed: "",
@@ -26,40 +24,71 @@ function EditProfile() {
     petLocation: "",
     petSituation: "",
   });
-  const onInputChange = (e) => {
-    setPetInfo({ ...petInfo, [e.target.name]: e.target.value });
+  const [updatedPet, setUpdatedPet] = useState();
+
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const token = localStorage.getItem("token");
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
   };
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    await axios.patch(`http://localhost:5005/api/v1/pet/${id}`, petInfo);
-    goToProfile("/profile");
-  };
+  const baseURL = "http://localhost:5005/api/v1";
+  const urlWithID = `${baseURL}/pets/${id}`;
 
-  const loadInfo = async () => {
-    try {
-      const response = await axios.get(
-        `http://localhost:5005/api/v1/pets/${id}`
-      );
-      const { pet } = response.data;
-      setPetInfo({
-        petName: pet.petName,
-        petDate: pet.petDate,
-        petBreed: pet.petBreed,
-        petColor: pet.petColor,
-        petGender: pet.petGender,
-        petLocation: pet.petLocation,
-        // .toString(),
-        petSituation: pet.petSituation,
-      });
-    } catch (error) {
-      console.log("Error fetching pet information", error);
-    }
-  };
-
+  // Fetches current pet data from remote database
   useEffect(() => {
-    loadInfo();
-  });
+    axios
+      .get(urlWithID, config)
+      .then((response) => {
+        console.log(response.data);
+        setPetDetails(response.data);
+      })
+      .catch((error) => {
+        console.log(
+          "Error fetching user and pet information",
+          error.response.data
+        );
+      });
+  }, []);
+
+  // Sends the updated pet data to the remote database
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(updatedPet); // Debug
+
+    axios
+      .patch(urlWithID, updatedPet, config)
+      .then((response) => {
+        console.log(response.data);
+        setSuccessMessage("Pet updated successfully.");
+        setErrorMessage("");
+      })
+      .catch((error) => {
+        console.log("Error updating pet profile", error.response.data);
+        setSuccessMessage("");
+        setErrorMessage("Failed to update pet. Please try again.");
+      });
+  };
+
+  // Updates the state variables petDetails and updatedPet based on user input changes
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+
+    setPetDetails((prevState) => ({
+      ...prevState,
+      pet: {
+        ...prevState.pet,
+        [name]: value,
+      },
+    }));
+
+    setUpdatedPet((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
   return (
     <>
@@ -73,11 +102,15 @@ function EditProfile() {
 
       <Container className="edit-profile-container">
         <h3 className="pet-info-h3">Pet Information </h3>
-
+        {/* Success message */}
+        {successMessage && (
+          <div className="successMessage">{successMessage}</div>
+        )}
+        {/* Error message */}
+        {errorMessage && <div className="errorMessage">{errorMessage}</div>}
         <Form
           className="edit-pet-info-form"
           id="edit-pet-info-form"
-          onSubmit={(e) => onSubmit(e)}
         >
           <Row>
             <Col md={6}>
@@ -87,8 +120,8 @@ function EditProfile() {
                   type="text"
                   id="petName"
                   name="petName"
-                  value={petInfo?.petName || ""}
-                  onChange={(e) => onInputChange(e)}
+                  value={petDetails.pet?.petName}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
             </Col>
@@ -99,8 +132,8 @@ function EditProfile() {
                   type="text"
                   id="petSituation"
                   name="petSituation"
-                  value={petInfo?.petSituation || ""}
-                  onChange={(e) => onInputChange(e)}
+                  value={petDetails.pet?.petSituation}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
             </Col>
@@ -113,8 +146,8 @@ function EditProfile() {
                   type="text"
                   id="animalType"
                   name="animalType"
-                  value={petInfo?.animalType || ""}
-                  onChange={(e) => onInputChange(e)}
+                  value={petDetails.pet?.animalType}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
             </Col>
@@ -125,8 +158,8 @@ function EditProfile() {
                   type="text"
                   id="petBreed"
                   name="petBreed"
-                  value={petInfo?.petBreed || ""}
-                  onChange={(e) => onInputChange(e)}
+                  value={petDetails.pet?.petBreed}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
             </Col>
@@ -140,8 +173,8 @@ function EditProfile() {
                   type="text"
                   id="petColor"
                   name="petColor"
-                  value={petInfo?.petColor || ""}
-                  onChange={(e) => onInputChange(e)}
+                  value={petDetails.pet?.petColor}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
             </Col>
@@ -152,8 +185,8 @@ function EditProfile() {
                   type="text"
                   id="petGender"
                   name="petGender"
-                  value={petInfo?.petGender || ""}
-                  onChange={(e) => onInputChange(e)}
+                  value={petDetails.pet?.petGender}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
             </Col>
@@ -167,9 +200,8 @@ function EditProfile() {
                   id="petLocation"
                   name="petLocation"
                   autoComplete="postal-code"
-                  // maxLength="5"
-                  value={petInfo?.petLocation || ""}
-                  onChange={(e) => onInputChange(e)}
+                  value={petDetails.pet?.petLocation}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
             </Col>
@@ -180,8 +212,8 @@ function EditProfile() {
                   type="date"
                   id="petDate"
                   name="petDate"
-                  value={petInfo?.petDate || ""}
-                  onChange={(e) => onInputChange(e)}
+                  value={petDetails.pet?.petDate}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
             </Col>
@@ -189,6 +221,7 @@ function EditProfile() {
           <Button
             type="submit"
             className="edit-profile-update"
+            onClick={handleSubmit}
           >
             Update
           </Button>
