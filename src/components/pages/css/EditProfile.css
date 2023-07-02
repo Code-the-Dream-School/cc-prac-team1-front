@@ -2,20 +2,26 @@
   margin-top: 100px;
   margin-bottom: 50px;
 }
+
 .pet-img-edit {
   float: left;
-  margin-top: 200px;
-  margin-left: 5px;
+  margin-top: 150px;
+  margin-left: 100px;
+  border-radius: 5px;
 }
+
 .edit-profile-container {
   float: right;
   width: 700px;
+  margin-right: 100px;
 }
+
 .contact-info-h3 {
   color: #8464b6;
   margin-top: 60px;
   margin-bottom: 50px;
 }
+
 .edit-profile-update {
   background-color: black;
   color: white;
@@ -28,4 +34,10 @@
 
 .edit-profile-update:hover {
   background-color: #8464b6;
+}
+
+.successMessage,
+.errorMessage {
+  padding-bottom: 30px;
+  margin-top: -20px;
 }
