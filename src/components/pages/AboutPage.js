@@ -4,6 +4,7 @@ import { Button, Row, Col } from "reactstrap";
 import "./css/AboutPage.css";
 import petImage from "../../creative-assets/pet-image.png";
 import footerImg from "../../creative-assets/footer-logo.png";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 function AboutPage() {
   const goToLogin = useNavigate();
@@ -120,20 +121,23 @@ function AboutPage() {
               href="https://www.facebook.com/"
               target="_blank"
               rel="noreferrer"
-              className="bi bi-facebook"
-            ></a>
+            >
+              <i className="bi bi-facebook"></i>
+            </a>
             <a
               href="https://www.instagram.com/"
               target="_blank"
               rel="noreferrer"
-              className="bi bi-instagram"
-            ></a>
+            >
+              <i className="bi bi-instagram"></i>
+            </a>
             <a
               href="https://twitter.com/i/flow/login?redirect_after_login=%2F%3Flang%3Den"
               target="_blank"
               rel="noreferrer"
-              className="bi bi-twitter"
-            ></a>
+            >
+              <i className="bi bi-twitter"></i>
+            </a>
           </span>
           <span className="links">
             <Link to="/">Home</Link>

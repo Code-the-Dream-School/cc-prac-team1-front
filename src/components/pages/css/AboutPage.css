@@ -25,6 +25,7 @@
 .second-row h2 {
   font-size: 48px;
   font-weight: bold;
+  padding: 20px 0px;
 }
 
 .third-row {
@@ -33,6 +34,12 @@
   padding-inline-end: 50px;
   margin-top: 70px;
   margin-bottom: 70px;
+}
+
+.third-row h2 {
+  font-size: 48px;
+  font-weight: bold;
+  padding: 20px 0px;
 }
 
 .fourth-row {
@@ -50,6 +57,7 @@
   font-size: 48px;
   font-weight: bold;
   text-align: initial;
+  padding: 20px 0px;
 }
 
 .fifth-row {
@@ -58,10 +66,17 @@
   padding-inline-start: 50px;
   padding-inline-end: 50px;
 }
+.purp-header {
+  color: #8464b6;
+  font-weight: bold;
+  font-size: 48px;
+  padding: 20px 8px;
+}
 
 .sixth-row h2 {
   color: white;
   font-weight: bold;
+  padding: 20px 0px;
 }
 
 .sixth-row {
@@ -152,9 +167,4 @@
   background-color: #8464b6;
   border: 2px solid rgb(45, 45, 45);
   box-shadow: 5px 5px 5px #00000042;
-}
-
-.purp-header {
-  color: #8464b6;
-  font-weight: bold;
 }
