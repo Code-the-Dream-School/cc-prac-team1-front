@@ -2,7 +2,7 @@
   background-color: black;
   color: white;
   padding: 100px 50px;
-  margin-top: 30px;
+  /* margin-top: 30px; */
 }
 
 .first-row h1 {
@@ -25,6 +25,7 @@
 .second-row h2 {
   font-size: 48px;
   font-weight: bold;
+  padding: 20px 0px;
 }
 
 .third-row {
@@ -33,6 +34,12 @@
   padding-inline-end: 50px;
   margin-top: 70px;
   margin-bottom: 70px;
+}
+
+.third-row h2 {
+  font-size: 48px;
+  font-weight: bold;
+  padding: 20px 0px;
 }
 
 .fourth-row {
@@ -50,6 +57,7 @@
   font-size: 48px;
   font-weight: bold;
   text-align: initial;
+  padding: 20px 0px;
 }
 
 .fifth-row {
@@ -58,10 +66,17 @@
   padding-inline-start: 50px;
   padding-inline-end: 50px;
 }
+.purp-header {
+  color: #8464b6;
+  font-weight: bold;
+  font-size: 48px;
+  padding: 20px 8px;
+}
 
 .sixth-row h2 {
   color: white;
   font-weight: bold;
+  padding: 20px 0px;
 }
 
 .sixth-row {
@@ -76,7 +91,35 @@
 
 .last-row {
   background-color: black;
-  padding: 70px;
+  padding: 30px 15px;
+}
+.last-row img {
+  width: 250px;
+  height: 75px;
+}
+.last-row div {
+  text-align: center;
+}
+
+.last-row a {
+  color: white;
+  padding: 0px 20px;
+}
+.copyright {
+  float: left;
+  color: white;
+  margin-top: 35px;
+  margin-left: 40px;
+  font-size: 18px;
+}
+.network-icons {
+  text-align: center;
+  margin-left: 150px;
+  font-size: 30px;
+}
+.links {
+  font-size: 20px;
+  float: right;
 }
 
 .first-about-button {
@@ -124,9 +167,4 @@
   background-color: #8464b6;
   border: 2px solid rgb(45, 45, 45);
   box-shadow: 5px 5px 5px #00000042;
-}
-
-.purp-header {
-  color: #8464b6;
-  font-weight: bold;
 }
