@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
 
-.space-for-header{
+.space-for-header {
   width: 100%;
-  height: 120px;
+  margin-top: 20px;
+  height: 80px;
 }
 
 .form-button {
@@ -13,16 +14,26 @@
   width: 200px;
   height: 50px;
   border-radius: 20px;
+  border: solid 1px;
   background: #000;
   color: #fff;
   text-align: center;
   font-size: 24px;
   font-family: Lato;
   margin: auto;
-  margin-top: 77px;
+  margin-top: 10px;
 }
 
-.form-button:hover{
-    background-color: #8464B6;
-    color: white;
+.form-button:hover {
+  background-color: #8464b6;
+  color: white;
+}
+
+.petSituationLabel {
+  margin-left: 10px;
+}
+
+.successMessage,
+.errorMessage {
+  padding-bottom: 20px;
 }
