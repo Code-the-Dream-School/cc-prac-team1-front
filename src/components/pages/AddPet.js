@@ -1,16 +1,17 @@
 import React from "react";
 import { Container, Form, FormGroup, Label, Input, Col, Row } from "reactstrap";
 import FormSelect from "react-bootstrap/FormSelect";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./css/AddPetPage.css";
 import axios from "axios";
 import Switch from "react-switch";
+import { Link } from "react-router-dom";
 
 function AddPet() {
   // Defines component variables
   const [image, setImage] = useState("");
   const [petName, setPetName] = useState("");
-  const [petSituation, setPetSituation] = useState("");
+  const [petSituation, setPetSituation] = useState("lost");
   const [animalType, setAnimalType] = useState("");
   const [petBreed, setPetBreed] = useState("");
   const [petColor, setPetColor] = useState("");
@@ -39,9 +40,12 @@ function AddPet() {
       petDescription
     ) => {
       const token = localStorage.getItem("token");
-      const baseURL = "http://localhost:5005/api/v1";
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+      };
+      const URL = "http://localhost:5005/api/v1/pets";
 
-      const data = {
+      const petData = {
         image: image,
         petName: petName,
         petSituation: petSituation,
@@ -56,15 +60,12 @@ function AddPet() {
 
       try {
         // Axios request to add a pet to the remote database
-        const response = await axios.post(`${baseURL}/pets`, data, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        console.log(petData);
+        const response = await axios.post(URL, petData, config);
 
         console.log("Submitting form .."); // Debug
 
-        if (response.status === 200) {
+        if (response.status === 201) {
           console.log("Success adding pet"); // Debug
 
           setSuccessMessage("Pet added successfully!");
@@ -86,11 +87,12 @@ function AddPet() {
         console.error("Error:", error); // Debug
 
         setSuccessMessage("");
-        setErrorMessage("Failed to add pet.");
+        setErrorMessage("Failed to add pet. Try again");
       }
     };
 
     postData(
+      image,
       petName,
       petSituation,
       animalType,
@@ -146,6 +148,14 @@ function AddPet() {
     <div>
       <Container>
         <div className="space-for-header">
+          <Link
+            to="/dashboard"
+            className="arrow-link"
+          >
+            &larr; Back to Dashboard
+          </Link>{" "}
+          <br />
+          <br />
           <h1>Add a pet</h1>
         </div>
         {/* Success message */}
@@ -262,9 +272,9 @@ function AddPet() {
                 value={petGender}
                 onChange={handleInputChange}
               >
+                <option value="">Choose one</option>
                 <option value="female">Female</option>
                 <option value="male">Male</option>
-                <option value="unknown">Unknown</option>
               </FormSelect>
             </Col>
           </Row>
@@ -286,7 +296,9 @@ function AddPet() {
             <br></br>
             <Col>
               <FormGroup>
-                <Label for="dateLost">Date Lost</Label>
+                <Label for="dateLost">
+                  {petSituation === "found" ? "Date Found" : "Date Lost"}
+                </Label>
                 <Input
                   type="date"
                   id=""
@@ -303,7 +315,7 @@ function AddPet() {
               <Input
                 type="textarea"
                 id=""
-                placeholder="Write down a few unique characteristics of the pet..."
+                placeholder="Write down a few unique characteristics about the pet"
                 name="petDescription"
                 value={petDescription}
                 onChange={handleInputChange}
