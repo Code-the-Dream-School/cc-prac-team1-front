@@ -1,8 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Button, Row, Col } from "reactstrap";
 import "./css/AboutPage.css";
 import petImage from "../../creative-assets/pet-image.png";
+import footerImg from "../../creative-assets/footer-logo.png";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 function AboutPage() {
   const goToLogin = useNavigate();
@@ -110,7 +112,40 @@ function AboutPage() {
           Get Started
         </Button>
       </Row>
-      <Row className="last-row"></Row>
+      <Row className="last-row">
+        <img src={footerImg} alt="cat and dog" />
+        <div>
+          <span className="copyright"> © 2023 </span>
+          <span className="network-icons">
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <i className="bi bi-facebook"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <i className="bi bi-instagram"></i>
+            </a>
+            <a
+              href="https://twitter.com/i/flow/login?redirect_after_login=%2F%3Flang%3Den"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <i className="bi bi-twitter"></i>
+            </a>
+          </span>
+          <span className="links">
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+            <Link to="/contact">Contact</Link>
+          </span>
+        </div>
+      </Row>
     </>
   );
 }

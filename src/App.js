@@ -46,7 +46,7 @@ function App() {
             element={<ProfilePage />}
           />
           <Route
-            path="/profile-edit"
+            path="/profile-edit/:id"
             element={<EditProfile />}
           />
           <Route
