@@ -13,6 +13,7 @@ import NavBar from "./components/elements/NavBar";
 import AboutPage from "./components/pages/AboutPage";
 import ContactPage from "./components/pages/ContactPage";
 import HomePage from "./components/pages/HomePage";
+import PetPage from "./components/pages/PetPage";
 
 // Defines the routes for the application
 function App() {
@@ -21,6 +22,18 @@ function App() {
       <NavBar />
       <div>
         <Routes>
+<<<<<<< HEAD
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/dashboard" element={<MapComponent />} />
+          <Route path="/add-pet" element={<LostOrFoundChoice />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile-edit" element={<EditProfile />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/pet-page" element={<PetPage/>} />
+=======
           <Route
             path="/"
             element={<HomePage />}
@@ -57,6 +70,7 @@ function App() {
             path="/contact"
             element={<ContactPage />}
           />
+>>>>>>> main
         </Routes>
       </div>
     </div>

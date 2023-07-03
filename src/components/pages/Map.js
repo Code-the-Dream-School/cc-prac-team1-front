@@ -8,6 +8,11 @@ import "./css/Map.css";
 import axios from "axios";
 import { Row, Col, Card, CardBody } from "reactstrap";
 import loadingImage from "../../creative-assets/cat-astronaut.gif";
+import PetPage from "./PetPage";
+
+// const handleClick () => {
+//   setPageComponent (<PetPage/>)
+// }
 
 const MapComponent = () => {
   const [userProvidedZipCode, setUserProvidedZipCode] = useState(""); // Initializes state variables for the user-provided ZIP code
@@ -126,10 +131,16 @@ const MapComponent = () => {
 
   const [petList, setPetList] = useState([]);
 
+<<<<<<< HEAD
+  
+
+  // Fetches pet data and geocode ZIP code when user provides a ZIP code
+=======
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
+>>>>>>> main
   useEffect(() => {
     if (userProvidedZipCode) {
       geocodeZipCode(userProvidedZipCode)
@@ -187,9 +198,13 @@ const MapComponent = () => {
     }
   }, [userProvidedZipCode]);
 
+<<<<<<< HEAD
+  
+=======
   const navigateToAddPet = () => {
     navigate("/add-pet");
   };
+>>>>>>> main
 
   return (
     <div className="map-container">
@@ -324,6 +339,38 @@ const MapComponent = () => {
           <div className="total-pets">Total Pets: {totalPets}</div>
         )}
         <Row>
+<<<<<<< HEAD
+          {petList.map((pet, index) => (
+            <Col
+              md={6}
+              key={index}
+            >
+              <Card className="mb-3">
+                <div className="card-header">
+                {/* <button onclick={handleClick}>
+                <img
+                    src={pet.petImage || "https://picsum.photos/id/237/300/200"}
+                    alt="Pet_Image"
+                    className="card-image"
+                  />
+                </button> */}
+                  <img
+                    src={pet.petImage || "https://picsum.photos/id/237/300/200"}
+                    alt="Pet_Image"
+                    className="card-image"
+                  />
+                </div>
+                <CardBody>
+                  <div className="d-flex align-items-center justify-content-between mb-3">
+                    <div>
+                      <h5 className="card-title mb-0">
+                        {pet.petName || "Pet name not available"}
+                      </h5>
+                    </div>
+                    <div className={`card-pet-situation ${pet.petSituation}`}>
+                      {pet.petSituation === "found" ? "Found" : "Lost"}
+                    </div>
+=======
           {petList
             .slice((currentPage - 1) * petsPerPage, currentPage * petsPerPage)
             .map((pet, index) => (
@@ -340,6 +387,7 @@ const MapComponent = () => {
                       alt="Pet_Image"
                       className="card-image"
                     />
+>>>>>>> main
                   </div>
                   <CardBody>
                     <div className="d-flex align-items-center justify-content-between mb-3">
