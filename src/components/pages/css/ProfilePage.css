@@ -29,6 +29,16 @@
   margin-left: 80px;
 }
 
+.user-name {
+  font-size: 30px;
+}
+.user-email {
+  font-size: 25px;
+}
+.user-phone {
+  font-size: 25px;
+}
+
 .table-header {
   color: white !important;
   background-color: #8464b6 !important; /* Change this color to your desired background color */
@@ -54,7 +64,17 @@ ul {
 }
 
 .profile-update {
-  margin-left: 50px;
+  margin-left: 25px;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  width: 100px;
+  margin-top: 15px;
+  margin-bottom: 100px;
+}
+.profile-update:hover {
+  background-color: #8464b6;
+  box-shadow: 5px 5px 5px #00000054;
 }
 
 input {

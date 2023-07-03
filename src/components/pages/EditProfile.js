@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./css/EditProfile.css";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import {
   Container,
   Row,
@@ -12,6 +12,7 @@ import {
   Input,
   Col,
 } from "reactstrap";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 function EditProfile() {
   const { id } = useParams();
@@ -92,141 +93,152 @@ function EditProfile() {
 
   return (
     <>
-      <img
-        src="https://images.pexels.com/photos/1000602/pexels-photo-1000602.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        className="pet-img-edit"
-        alt="..."
-        width={450}
-        height={350}
-      />
-
-      <Container className="edit-profile-container">
-        <h3 className="pet-info-h3">Pet Information </h3>
-        {/* Success message */}
-        {successMessage && (
-          <div className="successMessage">{successMessage}</div>
-        )}
-        {/* Error message */}
-        {errorMessage && <div className="errorMessage">{errorMessage}</div>}
-        <Form
-          className="edit-pet-info-form"
-          id="edit-pet-info-form"
-        >
-          <Row>
-            <Col md={6}>
-              <FormGroup>
-                <Label htmlFor="petName">Pet Name</Label>
-                <Input
-                  type="text"
-                  id="petName"
-                  name="petName"
-                  value={petDetails.pet?.petName}
-                  onChange={handleInputChange}
-                />
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label htmlFor="status">Status</Label>
-                <Input
-                  type="text"
-                  id="petSituation"
-                  name="petSituation"
-                  value={petDetails.pet?.petSituation}
-                  onChange={handleInputChange}
-                />
-              </FormGroup>
-            </Col>
-          </Row>
-          <Row>
-            <Col md={6}>
-              <FormGroup>
-                <Label htmlFor="animalType">Animal type</Label>
-                <Input
-                  type="text"
-                  id="animalType"
-                  name="animalType"
-                  value={petDetails.pet?.animalType}
-                  onChange={handleInputChange}
-                />
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label htmlFor="breed">Breed</Label>
-                <Input
-                  type="text"
-                  id="petBreed"
-                  name="petBreed"
-                  value={petDetails.pet?.petBreed}
-                  onChange={handleInputChange}
-                />
-              </FormGroup>
-            </Col>
-          </Row>
-
-          <Row>
-            <Col md={6}>
-              <FormGroup>
-                <Label htmlFor="color">Color</Label>
-                <Input
-                  type="text"
-                  id="petColor"
-                  name="petColor"
-                  value={petDetails.pet?.petColor}
-                  onChange={handleInputChange}
-                />
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label htmlFor="gender">Gender</Label>
-                <Input
-                  type="text"
-                  id="petGender"
-                  name="petGender"
-                  value={petDetails.pet?.petGender}
-                  onChange={handleInputChange}
-                />
-              </FormGroup>
-            </Col>
-          </Row>
-          <Row>
-            <Col md={6}>
-              <FormGroup>
-                <Label htmlFor="location">Location (Zip Code)</Label>
-                <Input
-                  type="text"
-                  id="petLocation"
-                  name="petLocation"
-                  autoComplete="postal-code"
-                  value={petDetails.pet?.petLocation}
-                  onChange={handleInputChange}
-                />
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label htmlFor="dateFound">Date</Label>
-                <Input
-                  type="date"
-                  id="petDate"
-                  name="petDate"
-                  value={petDetails.pet?.petDate}
-                  onChange={handleInputChange}
-                />
-              </FormGroup>
-            </Col>
-          </Row>
-          <Button
-            type="submit"
-            className="edit-profile-update"
-            onClick={handleSubmit}
-          >
-            Update
+      <Row>
+        <Link to={`/profile`}>
+          <Button className="return-icon">
+            <i className="bi bi-arrow-left"></i>
           </Button>
-        </Form>
-      </Container>
+        </Link>
+      </Row>
+      <Row className="img-form-row">
+        <Col md={6}>
+          <img
+            src="https://images.pexels.com/photos/1000602/pexels-photo-1000602.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            className="pet-img-edit"
+            alt="..."
+            width={450}
+            height={350}
+          />
+        </Col>
+
+        {/* Form with the pet informatioin starts here*/}
+        <Col md={6}>
+          <Container className="edit-profile-container">
+            <h2 className="pet-info">Pet Information </h2>
+            {/* Success message */}
+            {successMessage && (
+              <div className="successMessage">{successMessage}</div>
+            )}
+            {/* Error message */}
+            {errorMessage && <div className="errorMessage">{errorMessage}</div>}
+            <Form className="edit-pet-info-form" id="edit-pet-info-form">
+              <Row>
+                <Col md={6}>
+                  <FormGroup>
+                    <Label htmlFor="petName">Pet Name</Label>
+                    <Input
+                      type="text"
+                      id="petName"
+                      name="petName"
+                      value={petDetails.pet?.petName}
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={6}>
+                  <FormGroup>
+                    <Label htmlFor="status">Status</Label>
+                    <Input
+                      type="text"
+                      id="petSituation"
+                      name="petSituation"
+                      value={petDetails.pet?.petSituation}
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row>
+                <Col md={6}>
+                  <FormGroup>
+                    <Label htmlFor="animalType">Animal type</Label>
+                    <Input
+                      type="text"
+                      id="animalType"
+                      name="animalType"
+                      value={petDetails.pet?.animalType}
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={6}>
+                  <FormGroup>
+                    <Label htmlFor="breed">Breed</Label>
+                    <Input
+                      type="text"
+                      id="petBreed"
+                      name="petBreed"
+                      value={petDetails.pet?.petBreed}
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col md={6}>
+                  <FormGroup>
+                    <Label htmlFor="color">Color</Label>
+                    <Input
+                      type="text"
+                      id="petColor"
+                      name="petColor"
+                      value={petDetails.pet?.petColor}
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={6}>
+                  <FormGroup>
+                    <Label htmlFor="gender">Gender</Label>
+                    <Input
+                      type="text"
+                      id="petGender"
+                      name="petGender"
+                      value={petDetails.pet?.petGender}
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row>
+                <Col md={6}>
+                  <FormGroup>
+                    <Label htmlFor="location">Location (Zip Code)</Label>
+                    <Input
+                      type="text"
+                      id="petLocation"
+                      name="petLocation"
+                      autoComplete="postal-code"
+                      value={petDetails.pet?.petLocation}
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={6}>
+                  <FormGroup>
+                    <Label htmlFor="dateFound">Date</Label>
+                    <Input
+                      type="date"
+                      id="petDate"
+                      name="petDate"
+                      value={petDetails.pet?.petDate}
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Button
+                type="submit"
+                className="edit-profile-update"
+                onClick={handleSubmit}
+              >
+                Update
+              </Button>
+            </Form>
+          </Container>
+        </Col>
+      </Row>
     </>
   );
 }

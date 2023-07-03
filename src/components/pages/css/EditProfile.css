@@ -1,19 +1,45 @@
-.pet-info-h3 {
-  margin-top: 100px;
+.icon-image-container {
+  padding-inline-start: 50px;
+  padding-inline-end: 10px;
+}
+
+.return-icon {
+  background: none;
+  color: #8464b6;
+  font-size: 50px;
+  border: none;
+  float: left;
+  margin-top: 20px;
+  margin-left: 15px;
+}
+
+.return-icon:hover {
+  color: black;
+  background: none;
+  box-shadow: 5px 5px 5px #00000054;
+}
+
+.img-form-row {
+  padding-inline-start: 40px;
+  padding-inline-end: 50px;
+}
+
+.pet-info {
+  margin-top: 60px;
   margin-bottom: 50px;
 }
 
 .pet-img-edit {
   float: left;
-  margin-top: 150px;
-  margin-left: 100px;
+  margin-top: 70px;
+  /* margin-left: 20px; */
   border-radius: 5px;
 }
 
 .edit-profile-container {
   float: right;
   width: 700px;
-  margin-right: 100px;
+  /* margin-right: 50px; */
 }
 
 .contact-info-h3 {
@@ -34,6 +60,7 @@
 
 .edit-profile-update:hover {
   background-color: #8464b6;
+  box-shadow: 5px 5px 5px #00000054;
 }
 
 .successMessage,
