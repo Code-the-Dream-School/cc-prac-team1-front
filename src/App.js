@@ -1,5 +1,5 @@
 // Imports - Dependencies
-import React, { useState } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 // Imports - Pages
@@ -17,13 +17,12 @@ import PetPage from "./components/pages/PetPage";
 
 // Defines the routes for the application
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // change this value to false to see the nav bar for non-logged in users
-
   return (
     <div>
-      <NavBar isLoggedIn={isLoggedIn} />
+      <NavBar />
       <div>
         <Routes>
+<<<<<<< HEAD
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
@@ -34,6 +33,44 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/pet-page" element={<PetPage/>} />
+=======
+          <Route
+            path="/"
+            element={<HomePage />}
+          />
+          <Route
+            path="/login"
+            element={<LoginPage />}
+          />
+          <Route
+            path="/register"
+            element={<RegisterPage />}
+          />
+          <Route
+            path="/dashboard"
+            element={<MapComponent />}
+          />
+          <Route
+            path="/add-pet"
+            element={<LostOrFoundChoice />}
+          />
+          <Route
+            path="/profile"
+            element={<ProfilePage />}
+          />
+          <Route
+            path="/profile-edit/:id"
+            element={<EditProfile />}
+          />
+          <Route
+            path="/about"
+            element={<AboutPage />}
+          />
+          <Route
+            path="/contact"
+            element={<ContactPage />}
+          />
+>>>>>>> main
         </Routes>
       </div>
     </div>

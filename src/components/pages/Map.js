@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -17,8 +18,22 @@ const MapComponent = () => {
   const [userProvidedZipCode, setUserProvidedZipCode] = useState(""); // Initializes state variables for the user-provided ZIP code
   const [showPrompt, setShowPrompt] = useState(true); // Initializes state variables to control the visibility of the prompt
   const [showGif, setShowGif] = useState(true); // Initializes state variable to control the visibility of the gif
+  const [currentPage, setCurrentPage] = useState(1); // Current page number
+  const [petsPerPage] = useState(12); // Number of pets to show per page
+  const [totalPages, setTotalPages] = useState(1); // Total number of pages
+  const [totalPets, setTotalPets] = useState(-1);
+  const [showFilter, setShowFilter] = useState(true);
+  const [showPagination, setShowPagination] = useState(false);
+  const navigate = useNavigate();
 
   const mapRef = useRef(null); // Ref to store the map instance
+
+  // Sets the token variable and url for the Fetch API requests
+  const token = localStorage.getItem("token");
+
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
 
   // Defines an asynchronous function to geocode a ZIP code using MapQuest API
   const geocodeZipCode = async (zipcode) => {
@@ -97,7 +112,7 @@ const MapComponent = () => {
 
   // Initializes the map instance
   useEffect(() => {
-    mapRef.current = L.map("map").setView([0, 0], 13);
+    mapRef.current = L.map("map").setView([0, 0], 14);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
@@ -116,38 +131,65 @@ const MapComponent = () => {
 
   const [petList, setPetList] = useState([]);
 
+<<<<<<< HEAD
   
 
   // Fetches pet data and geocode ZIP code when user provides a ZIP code
+=======
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+>>>>>>> main
   useEffect(() => {
     if (userProvidedZipCode) {
       geocodeZipCode(userProvidedZipCode)
         .then(({ lat, lng }) => {
-          mapRef.current.setView([lat, lng], 13);
-          axios
-            .get("http://localhost:5005/api/v1/pets")
-            .then((response) => {
-              const fetchedPets = response.data;
-              setPetList(fetchedPets);
-              fetchedPets.forEach(async (pet) => {
-                try {
-                  const { lat, lng } = await geocodeZipCode(pet.petLocation);
-                  addMarkerToMap(lat, lng, pet);
-                } catch (error) {
-                  console.error("Error geocoding pet's ZIP code:", error);
-                }
-              });
-              setShowGif(false);
-            })
-            .catch((error) => {
-              console.error("Error fetching pets:", error);
-            });
+          mapRef.current.setView([lat, lng], 14);
         })
         .catch((error) => {
           console.error("Error geocoding ZIP code:", error);
         });
     }
   }, [userProvidedZipCode]);
+
+  useEffect(() => {
+    if (userProvidedZipCode) {
+      axios
+        .get("http://localhost:5005/api/v1/pets", config)
+        .then((response) => {
+          const fetchedPets = response.data;
+          setPetList(fetchedPets);
+          setTotalPets(fetchedPets.length);
+          setShowPagination(true);
+          setShowGif(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching pets:", error);
+        });
+    }
+  }, [userProvidedZipCode]);
+
+  useEffect(() => {
+    if (userProvidedZipCode && petList.length > 0) {
+      const addMarkersToMap = async () => {
+        for (const pet of petList) {
+          try {
+            const { lat, lng } = await geocodeZipCode(pet.petLocation);
+            addMarkerToMap(lat, lng, pet);
+          } catch (error) {
+            console.error("Error geocoding pet's ZIP code:", error);
+          }
+        }
+
+        // Calculate the total number of pages based on the pet list length and pets per page
+        const total = Math.ceil(petList.length / petsPerPage);
+        setTotalPages(total);
+      };
+
+      addMarkersToMap();
+    }
+  }, [userProvidedZipCode, petList, petsPerPage]);
 
   // Shows prompt if ZIP code is not provided
   useEffect(() => {
@@ -156,113 +198,134 @@ const MapComponent = () => {
     }
   }, [userProvidedZipCode]);
 
+<<<<<<< HEAD
   
+=======
+  const navigateToAddPet = () => {
+    navigate("/add-pet");
+  };
+>>>>>>> main
 
   return (
     <div className="map-container">
       <div className="feed-container">
-        <div className="filter-container">
-          <div className="filter-row">
-            <div className="filter-item">
-              <label htmlFor="situationFilter">Pet Situation:</label>
-              <div className="checkbox-group">
-                <div>
-                  <input
-                    type="checkbox"
-                    id="situationFilter1"
-                    value="found"
-                  />
-                  <label htmlFor="situationFilter1">Found</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    id="situationFilter2"
-                    value="lost"
-                  />
-                  <label htmlFor="situationFilter2">Lost</label>
-                </div>
-              </div>
-            </div>
-            <div className="filter-item">
-              <label htmlFor="genderFilter">Pet Gender:</label>
-              <div className="checkbox-group">
-                <div>
-                  <input
-                    type="checkbox"
-                    id="genderFilter1"
-                    value="male"
-                  />
-                  <label htmlFor="genderFilter1">Male</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    id="genderFilter2"
-                    value="female"
-                  />
-                  <label htmlFor="genderFilter2">Female</label>
+        <button
+          className="toggle-filter-button"
+          onClick={() => setShowFilter(!showFilter)}
+        >
+          <i class="bi bi-filter"></i>
+          {showFilter ? " Hide Filter" : " Show Filter"}
+        </button>
+        <button
+          className="navigate-button-feed"
+          onClick={navigateToAddPet}
+        >
+          <i class="bi bi-plus-lg"></i> Add a pet
+        </button>
+        {showFilter && (
+          <div className="filter-container">
+            <div className="filter-row">
+              <div className="filter-item">
+                <label htmlFor="situationFilter">Pet Situation:</label>
+                <div className="checkbox-group">
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="situationFilter1"
+                      value="found"
+                    />
+                    <label htmlFor="situationFilter1">Found</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="situationFilter2"
+                      value="lost"
+                    />
+                    <label htmlFor="situationFilter2">Lost</label>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="filter-item">
-              <label htmlFor="dateFilter">Pet Date:</label>
-              <div className="calendar-group">
-                <input
-                  type="date"
-                  id="dateFilter"
-                />
+              <div className="filter-item">
+                <label htmlFor="genderFilter">Pet Gender:</label>
+                <div className="checkbox-group">
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="genderFilter1"
+                      value="male"
+                    />
+                    <label htmlFor="genderFilter1">Male</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="genderFilter2"
+                      value="female"
+                    />
+                    <label htmlFor="genderFilter2">Female</label>
+                  </div>
+                </div>
               </div>
-            </div>
+              <div className="filter-item">
+                <label htmlFor="dateFilter">Pet Date:</label>
+                <div className="calendar-group">
+                  <input
+                    type="date"
+                    id="dateFilter"
+                  />
+                </div>
+              </div>
 
-            <div className="filter-item">
-              <label htmlFor="colorFilter">Pet Color:</label>
-              <div className="input-group">
-                <input
-                  type="text"
-                  id="nameFilter"
-                  placeholder="Enter pet's color"
-                />
+              <div className="filter-item">
+                <label htmlFor="colorFilter">Pet Color:</label>
+                <div className="input-group">
+                  <input
+                    type="text"
+                    id="nameFilter"
+                    placeholder="Enter pet's color"
+                  />
+                </div>
               </div>
+            </div>
+            <div className="filter-row">
+              <div className="filter-item">
+                <label htmlFor="nameFilter">Pet Name:</label>
+                <div className="input-group">
+                  <input
+                    type="text"
+                    id="nameFilter"
+                    placeholder="Enter pet name"
+                  />
+                </div>
+              </div>
+              <div className="filter-item">
+                <label htmlFor="typeFilter">Animal Type:</label>
+                <div className="input-group">
+                  <input
+                    type="text"
+                    id="typeFilter"
+                    placeholder="Enter animal type"
+                  />
+                </div>
+              </div>
+              <div className="filter-item">
+                <label htmlFor="breedFilter">Pet Breed:</label>
+                <div className="input-group">
+                  <input
+                    type="text"
+                    id="breedFilter"
+                    placeholder="Enter pet breed"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="filter-buttons">
+              <button className="filter-button">Filter</button>
+              <button className="filter-button">Clear Filters</button>
             </div>
           </div>
-          <div className="filter-row">
-            <div className="filter-item">
-              <label htmlFor="nameFilter">Pet Name:</label>
-              <div className="input-group">
-                <input
-                  type="text"
-                  id="nameFilter"
-                  placeholder="Enter pet name"
-                />
-              </div>
-            </div>
-            <div className="filter-item">
-              <label htmlFor="typeFilter">Animal Type:</label>
-              <div className="input-group">
-                <input
-                  type="text"
-                  id="typeFilter"
-                  placeholder="Enter animal type"
-                />
-              </div>
-            </div>
-            <div className="filter-item">
-              <label htmlFor="breedFilter">Pet Breed:</label>
-              <div className="input-group">
-                <input
-                  type="text"
-                  id="breedFilter"
-                  placeholder="Enter pet breed"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="filter-buttons">
-            <button className="filter-button">Filter</button>
-            <button className="filter-button">Clear Filters</button>
-          </div>
-        </div>
+        )}
         <div className="image-container">
           {showGif && (
             <img
@@ -272,7 +335,11 @@ const MapComponent = () => {
             />
           )}
         </div>
+        {totalPets !== -1 && (
+          <div className="total-pets">Total Pets: {totalPets}</div>
+        )}
         <Row>
+<<<<<<< HEAD
           {petList.map((pet, index) => (
             <Col
               md={6}
@@ -303,21 +370,71 @@ const MapComponent = () => {
                     <div className={`card-pet-situation ${pet.petSituation}`}>
                       {pet.petSituation === "found" ? "Found" : "Lost"}
                     </div>
+=======
+          {petList
+            .slice((currentPage - 1) * petsPerPage, currentPage * petsPerPage)
+            .map((pet, index) => (
+              <Col
+                md={6}
+                key={index}
+              >
+                <Card className="mb-3">
+                  <div className="card-header">
+                    <img
+                      src={
+                        pet.petImage || "https://picsum.photos/id/237/300/200"
+                      }
+                      alt="Pet_Image"
+                      className="card-image"
+                    />
+>>>>>>> main
                   </div>
-                  <p className="card-date mb-2">
-                    {pet.petSituation === "found"
-                      ? "Found on"
-                      : "Missing since"}{" "}
-                    {pet.petDate}
-                  </p>
-                  <p className="card-description">
-                    {pet.petDescription || "No description provided"}
-                  </p>
-                </CardBody>
-              </Card>
-            </Col>
-          ))}
+                  <CardBody>
+                    <div className="d-flex align-items-center justify-content-between mb-3">
+                      <div>
+                        <h5 className="card-title mb-0">
+                          {pet.petName || "Pet name not available"}
+                        </h5>
+                      </div>
+                      <div className={`card-pet-situation ${pet.petSituation}`}>
+                        {pet.petSituation === "found" ? "Found" : "Lost"}
+                      </div>
+                    </div>
+                    <p className="card-date mb-2">
+                      {pet.petSituation === "found"
+                        ? "Found on"
+                        : "Missing since"}{" "}
+                      {pet.petDate}
+                    </p>
+                    <p className="card-description">
+                      {pet.petDescription || "No description provided"}
+                    </p>
+                  </CardBody>
+                </Card>
+              </Col>
+            ))}
         </Row>
+        {showPagination && (
+          <div className="pagination">
+            <button
+              className="pagination-arrow"
+              disabled={currentPage === 1}
+              onClick={() => handlePageChange(currentPage - 1)}
+            >
+              <i className="bi bi-arrow-left"></i>
+            </button>
+            <div className="page-number">
+              {currentPage} / {totalPages}
+            </div>
+            <button
+              className="pagination-arrow"
+              disabled={currentPage === totalPages}
+              onClick={() => handlePageChange(currentPage + 1)}
+            >
+              <i className="bi bi-arrow-right"></i>
+            </button>
+          </div>
+        )}
       </div>
       <div className="map-wrapper">
         {showPrompt && (
