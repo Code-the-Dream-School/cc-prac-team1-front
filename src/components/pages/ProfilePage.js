@@ -50,18 +50,19 @@ function ProfilePage() {
 
   return (
     <>
-      <Container className="profile-header">
-        <div>
-          <h1 className="profile-h1">Profile</h1>
-        </div>
-      </Container>
+      <div>
+        <h1 className="profile-h1">Profile</h1>
+      </div>
       <div className="profile-page-container">
         <Container className="profile-user">
           <div className="user-info-container">
             <div className="user-icon">
               <i className="bi bi-person-circle icon-large"></i>
             </div>
-            <div className="user-details" key={user?.id}>
+            <div
+              className="user-details"
+              key={user?.id}
+            >
               <h3>Name:</h3>
               {/* <input type="text" value={user?.name} /> */}
               <span className="user-name">{user?.name}</span>
@@ -75,9 +76,6 @@ function ProfilePage() {
               <h3>Phone Number:</h3>
               {/* <input type="text" value={user?.phone} /> */}
               <span className="user-phone"> {user?.phone} </span>
-              <br></br>
-              <br />
-              <Button className="profile-update">Update</Button>
             </div>
           </div>
         </Container>
@@ -95,10 +93,15 @@ function ProfilePage() {
             </thead>
             <tbody>
               {paginatedPetDetails.map((pet) => (
-                <tr className="pet-details-row" key={pet._id}>
+                <tr
+                  className="pet-details-row"
+                  key={pet._id}
+                >
                   <td>
                     <img
-                      src={pet.image}
+                      src={
+                        pet.petImage || "https://picsum.photos/id/237/300/200"
+                      }
                       className="rounded float-left"
                       alt="..."
                       width={100}

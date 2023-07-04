@@ -9,7 +9,6 @@ import axios from "axios";
 import { Row, Col, Card, CardBody } from "reactstrap";
 import loadingImage from "../../creative-assets/cat-astronaut.gif";
 
-
 // const handleClick () => {
 //   setPageComponent (<PetPage/>)
 // }
@@ -83,10 +82,11 @@ const MapComponent = () => {
     const popupContent = `
       <div class="popup-container">
         <div class="popup-image">
-          <img
-            src=petInfo.image
-            alt="Pet_Image"
-          />
+        <img
+        src="${petInfo.image || "https://picsum.photos/id/237/300/200"}"
+        alt="Pet_Image"
+        />
+        <br/><br/>
         </div>
         <div class="popup-info">
           <h3>${
@@ -349,9 +349,9 @@ const MapComponent = () => {
                   <CardBody>
                     <div className="d-flex align-items-center justify-content-between mb-3">
                       <div>
-                        <h5 className="card-title mb-0">
+                        <h3 className="card-title mb-0">
                           {pet.petName || "Pet name not available"}
-                        </h5>
+                        </h3>
                       </div>
                       <div className={`card-pet-situation ${pet.petSituation}`}>
                         {pet.petSituation === "found" ? "Found" : "Lost"}
@@ -366,6 +366,8 @@ const MapComponent = () => {
                     <p className="card-description">
                       {pet.petDescription || "No description provided"}
                     </p>
+                    <h5>Contact Information</h5>
+                    <p>Phone Number: {pet.contact.phone}</p>
                   </CardBody>
                 </Card>
               </Col>

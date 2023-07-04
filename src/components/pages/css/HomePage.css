@@ -1,10 +1,9 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap");
 
-/* .main-container {
-  display: grid;
-} */
+/*
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+*/
 
 .header {
   align-items: center;
@@ -34,7 +33,6 @@
   color: white;
   text-align: center;
   margin-top: 50px;
-  margin-bottom: 50px;
   margin-left: 45%;
 }
 .header button:hover {
@@ -45,6 +43,9 @@
 }
 
 .section1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding-inline-start: 170px;
   padding-inline-end: 170px;
   padding-top: 40px;
@@ -61,6 +62,11 @@
   padding: 20px 0px;
 }
 
+.section1-p {
+  width: 900px;
+  margin-bottom: 40px;
+}
+
 .section2 {
   background-color: #f4f2f3;
   text-align: initial;
@@ -68,6 +74,17 @@
   padding-inline-end: 40px;
   margin-top: 70px;
   margin-bottom: 0px;
+}
+
+.section2-image {
+  margin-left: -20px;
+}
+
+.section2-p,
+.section3-p,
+.section5-p {
+  margin-top: 80px;
+  width: 700px;
 }
 
 .section2 h2 {
@@ -83,6 +100,7 @@
   background: #8464b6;
   color: white;
   text-align: center;
+  margin-top: 40px;
 }
 
 .section2 button:hover {
@@ -93,11 +111,20 @@
 }
 
 .section3 {
+  display: flex;
+  justify-content: center;
   text-align: initial;
   padding-inline-start: 40px;
   padding-inline-end: 20px;
   margin-top: 0px;
   margin-bottom: 0px;
+}
+
+.section3-image {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .section3 h2 {
@@ -108,6 +135,10 @@
 }
 
 .section4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   background-color: #8464b6;
   padding-inline-start: 170px;
   padding-inline-end: 170px;
@@ -117,6 +148,7 @@
 }
 
 .section4 p {
+  width: 900px;
   padding-top: 20px;
   padding-bottom: 40px;
 }
@@ -136,7 +168,6 @@
   background: black;
   color: white;
   text-align: center;
-  margin-left: 45%;
   margin-bottom: 70px;
 }
 .section4 button:hover {
@@ -147,6 +178,8 @@
 }
 
 .section5 {
+  display: flex;
+  justify-content: center;
   text-align: initial;
   padding-inline-start: 40px;
   padding-inline-end: 20px;
@@ -159,6 +192,13 @@
   font-size: 48px;
   font-weight: bold;
   padding: 20px 0px;
+}
+
+.section5-image {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .section5 button {
