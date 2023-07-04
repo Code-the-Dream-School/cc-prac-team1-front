@@ -152,7 +152,7 @@ const MapComponent = () => {
       axios
         .get("http://localhost:5005/api/v1/pets", config)
         .then((response) => {
-          const fetchedPets = response.data;
+          const fetchedPets = response.data.pets;
           setPetList(fetchedPets);
           setTotalPets(fetchedPets.length);
           setShowPagination(true);

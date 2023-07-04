@@ -29,8 +29,8 @@ function ProfilePage() {
     axios
       .get("http://localhost:5005/api/v1/pets", config)
       .then((response) => {
-        setPetDetails(response.data);
-        setUser(response.data[0].contact);
+        setPetDetails(response.data.pets);
+        setUser(response.data.pets[0].contact);
       })
       .catch((error) => {
         console.log(
@@ -61,29 +61,20 @@ function ProfilePage() {
             <div className="user-icon">
               <i className="bi bi-person-circle icon-large"></i>
             </div>
-            <div
-              className="user-details"
-              key={user?.id}
-            >
+            <div className="user-details" key={user?.id}>
               <h3>Name:</h3>
-              <input
-                type="text"
-                value={user?.name}
-              />
+              {/* <input type="text" value={user?.name} /> */}
+              <span className="user-name">{user?.name}</span>
               <br />
               <br />
               <h3>Email:</h3>
-              <input
-                type="text"
-                value={user?.email}
-              />
+              {/* <input type="text" value={user?.email} /> */}
+              <span className="user-email">{user?.email}</span>
               <br />
               <br />
               <h3>Phone Number:</h3>
-              <input
-                type="text"
-                value={user?.phone}
-              />
+              {/* <input type="text" value={user?.phone} /> */}
+              <span className="user-phone"> {user?.phone} </span>
               <br></br>
               <br />
               <Button className="profile-update">Update</Button>
@@ -104,10 +95,7 @@ function ProfilePage() {
             </thead>
             <tbody>
               {paginatedPetDetails.map((pet) => (
-                <tr
-                  className="pet-details-row"
-                  key={pet._id}
-                >
+                <tr className="pet-details-row" key={pet._id}>
                   <td>
                     <img
                       src={pet.image}
@@ -140,7 +128,7 @@ function ProfilePage() {
                     </ul>
                   </td>
                   <td>{pet.petDescription || "N/A"}</td>
-                  <td>
+                  <td className="edit-actions">
                     <Button
                       type="submit"
                       onClick={() => handleDelete(pet._id)}

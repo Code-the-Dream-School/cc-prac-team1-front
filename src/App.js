@@ -6,7 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import LoginPage from "./components/pages/LoginPage";
 import RegisterPage from "./components/pages/RegisterPage";
 import MapComponent from "./components/pages/Map";
-import LostOrFoundChoice from "./components/pages/LostOrFoundChoice";
+import AddPetPage from "./components/pages/AddPet";
 import ProfilePage from "./components/pages/ProfilePage";
 import EditProfile from "./components/pages/EditProfile";
 import NavBar from "./components/elements/NavBar";
