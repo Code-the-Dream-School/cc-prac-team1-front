@@ -22,7 +22,6 @@ function App() {
       <NavBar />
       <div>
         <Routes>
-<<<<<<< HEAD
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
@@ -33,44 +32,6 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/pet-page" element={<PetPage/>} />
-=======
-          <Route
-            path="/"
-            element={<HomePage />}
-          />
-          <Route
-            path="/login"
-            element={<LoginPage />}
-          />
-          <Route
-            path="/register"
-            element={<RegisterPage />}
-          />
-          <Route
-            path="/dashboard"
-            element={<MapComponent />}
-          />
-          <Route
-            path="/add-pet"
-            element={<AddPetPage />}
-          />
-          <Route
-            path="/profile"
-            element={<ProfilePage />}
-          />
-          <Route
-            path="/profile-edit/:id"
-            element={<EditProfile />}
-          />
-          <Route
-            path="/about"
-            element={<AboutPage />}
-          />
-          <Route
-            path="/contact"
-            element={<ContactPage />}
-          />
->>>>>>> main
         </Routes>
       </div>
     </div>
