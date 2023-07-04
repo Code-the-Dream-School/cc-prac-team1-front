@@ -1,8 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap");
+
 .first-row {
   background-color: black;
   color: white;
   padding: 100px 50px;
-  /* margin-top: 30px; */
 }
 
 .first-row h1 {
@@ -14,6 +15,8 @@
 }
 
 .second-row {
+  display: flex;
+  justify-content: center;
   text-align: center;
   padding-inline-start: 170px;
   padding-inline-end: 170px;
@@ -28,12 +31,20 @@
   padding: 20px 0px;
 }
 
+.second-row-p {
+  width: 800px;
+}
+
 .third-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: initial;
   padding-inline-start: 50px;
   padding-inline-end: 50px;
   margin-top: 70px;
   margin-bottom: 70px;
+  padding-left: 60px;
 }
 
 .third-row h2 {
@@ -42,10 +53,14 @@
   padding: 20px 0px;
 }
 
+.third-row-image {
+  display: flex;
+  justify-content: center;
+}
+
 .fourth-row {
   background-color: #f4f2f3;
   text-align: initial;
-
   padding-inline-end: 50px;
   padding-top: 50px;
   padding-bottom: 50px;
@@ -60,12 +75,18 @@
   padding: 20px 0px;
 }
 
+.fourth-row-p {
+  width: 600px;
+  margin-top: 80px;
+}
+
 .fifth-row {
   margin-top: 70px;
   margin-bottom: 70px;
   padding-inline-start: 50px;
   padding-inline-end: 50px;
 }
+
 .purp-header {
   color: #8464b6;
   font-weight: bold;

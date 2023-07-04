@@ -30,7 +30,10 @@ function ContactPage() {
       </Row>
 
       <Row className="column-section">
-        <Col md={6} className="support">
+        <Col
+          md={6}
+          className="support"
+        >
           <h2 className="support-title">Support and Assistance</h2>
           <p>
             For specific inquiries regarding lost pets, technical support, or
@@ -48,7 +51,10 @@ function ContactPage() {
           <b>Phone: </b> +1 (123) 456-7890
         </Col>
 
-        <Col md={6} className="partner">
+        <Col
+          md={6}
+          className="partner"
+        >
           <h2 className="partner-title">Partnerships and Collaborations</h2>
           <p>
             If you're interested in partnering with Pet Watch or exploring
@@ -81,7 +87,10 @@ function ContactPage() {
       </Row>
 
       <Row className="footer">
-        <img src={footerImg} alt="cat and dog" />
+        <img
+          src={footerImg}
+          alt="cat and dog"
+        />
         <div>
           <span className="copyright"> © 2023 </span>
           <span className="network-icons">

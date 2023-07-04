@@ -17,7 +17,7 @@ function AboutPage() {
       </Row>
       <Row className="second-row">
         <h2 className="purp-header">Our Mission</h2>
-        <p>
+        <p className="second-row-p">
           At Pet Watch, our mission is simple yet profound: to reunite lost pets
           with their worried families. We understand the deep bond between
           humans and their four-legged companions, and the heartache that ensues
@@ -48,8 +48,16 @@ function AboutPage() {
             Get Started
           </Button>
         </Col>
-        <Col md={6}>
-          <img src={petImage} alt="cat and dog" width={600} height={500} />
+        <Col
+          md={6}
+          className="third-row-image"
+        >
+          <img
+            src={petImage}
+            alt="cat and dog"
+            width={600}
+            height={500}
+          />
         </Col>
       </Row>
       <br />
@@ -62,7 +70,10 @@ function AboutPage() {
             height={500}
           />
         </Col>
-        <Col md={6}>
+        <Col
+          md={6}
+          className="fourth-row-p"
+        >
           <h2>Powerful Tools for Pet Owners </h2>
           <p>
             We believe that every pet owner deserves the best resources and
@@ -77,7 +88,7 @@ function AboutPage() {
       </Row>
       <Row className="fifth-row">
         <h2 className="purp-header">Making a Difference Together</h2>
-        <p>
+        <p className="fifth-row-p">
           Pet Watch isn't just for pet owners; it's for anyone who wants to make
           a positive impact in the lives of animals and their human families.
           Whether you're a volunteer, an animal shelter, or a concerned
@@ -113,7 +124,10 @@ function AboutPage() {
         </Button>
       </Row>
       <Row className="last-row">
-        <img src={footerImg} alt="cat and dog" />
+        <img
+          src={footerImg}
+          alt="cat and dog"
+        />
         <div>
           <span className="copyright"> © 2023 </span>
           <span className="network-icons">
