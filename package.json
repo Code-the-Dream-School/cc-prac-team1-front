@@ -17,6 +17,7 @@
     "react-paginate": "^8.2.0",
     "react-router-dom": "^6.12.1",
     "react-scripts": "5.0.1",
+    "react-switch": "^7.0.0",
     "reactstrap": "^9.1.10",
     "styled-components": "^5.3.8",
     "web-vitals": "^2.1.4"

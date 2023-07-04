@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+
+.space-for-header {
+  width: 100%;
+  margin-top: 30px;
+  height: 120px;
+}
+
+.form-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 50px;
+  border-radius: 20px;
+  border: solid 1px;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  font-size: 24px;
+  font-family: Lato;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.form-button:hover {
+  background-color: #8464b6;
+  color: white;
+}
+
+.petSituationLabel {
+  margin-left: 10px;
+}
+
+.successMessage,
+.errorMessage {
+  text-align: center;
+  padding-top: 10px;
+  margin-bottom: 20px;
+  width: 250px;
+  height: 45px;
+  border-radius: 5px;
+}
+
+.successMessage {
+  background-color: lightgreen;
+}
+.errorMessage {
+  background-color: lightcoral;
+  color: white;
+}
+
+.arrow-link {
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+}
