@@ -26,7 +26,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/dashboard" element={<MapComponent />} />
-          <Route path="/add-pet" element={<LostOrFoundChoice />} />
+          {/* <Route path="/add-pet" element={<LostOrFoundChoice />} /> */}
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/profile-edit" element={<EditProfile />} />
           <Route path="/about" element={<AboutPage />} />

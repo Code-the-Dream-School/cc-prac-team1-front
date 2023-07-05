@@ -1,42 +1,51 @@
 import React, {useEffect, useState} from "react";
-import { Row, Col, Table } from "reactstrap";
+import { Row, Col, Table, Container } from "reactstrap";
 import axios from "axios";
 
 function PetPage () {
   
-const [user, setUser] = useState(null);
-const [petDetails, setPetDetails] = useState([]);
+const [user, setUser] = useState(" ");
+const [petDetails, setPetDetails] = useState([0]);
 
+// useEffect (() => {
 
-const fetchData = async () => {
-  try {
-    const response = await axios.get("http://localhost:5005/api/v1/pets");
-    setUser(response.data[0].contact);
-    setPetDetails(response.data);
-  } catch (error) {
-    console.log(
-      "Error fetching user and pet information",
-      error.response.data
-    );
-  }
-};
-useEffect(() => {
-  fetchData();
-}, []);
+  const fetchData = async () => {
+    // try {
+    await axios.get("http://localhost:5005/api/v1/pets").then((response)=> {
+        const info = response.data.pets;
+        console.log(info);
+        //  setUser(info[0].contact);
+          setPetDetails(info);
+      }) .catch( (error) => {
+      console.log(
+        "Error fetching user and pet information",
+        error.response.data
+      );
+    });
+  };
+  // useEffect(() => {
+    fetchData();
+  // }, []);
+
+// })
+
 
     return (
         <>
-        
-        {petDetails.map((pet) => (
+        hello1
+        <Container>Hello2
+          <div>hello3</div>
+        {petDetails().map((pet) => (
           <div>
-            <Row className="pet-name" key={pet._id}>
-            {pet.petName} Charlie </Row>
-
+          
+            <Row className="pet-name" key={pet.id}>
+            {pet.petName || "Pet name is not available"} </Row>
+        
            <Row className="pet-image" >
         <img src = {pet.image|| "Pet photo not available"}  alt="Pet"></img>
         <img src = "https://images.pexels.com/photos/825949/pexels-photo-825949.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Pet"></img>
           </Row> 
-      
+          
 <Row>      
 <Col>
         <Table borderless>
@@ -110,7 +119,7 @@ useEffect(() => {
 </Row>  
 </div>     
         ))}
-
+</Container>
         </>
     );
 }
