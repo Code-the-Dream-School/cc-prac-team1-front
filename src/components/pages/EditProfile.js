@@ -103,7 +103,7 @@ function EditProfile() {
       <Row className="img-form-row">
         <Col md={6}>
           <img
-            src="https://images.pexels.com/photos/1000602/pexels-photo-1000602.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            src="https://picsum.photos/id/237/300/200"
             className="pet-img-edit"
             alt="..."
             width={450}
@@ -121,7 +121,10 @@ function EditProfile() {
             )}
             {/* Error message */}
             {errorMessage && <div className="errorMessage">{errorMessage}</div>}
-            <Form className="edit-pet-info-form" id="edit-pet-info-form">
+            <Form
+              className="edit-pet-info-form"
+              id="edit-pet-info-form"
+            >
               <Row>
                 <Col md={6}>
                   <FormGroup>
