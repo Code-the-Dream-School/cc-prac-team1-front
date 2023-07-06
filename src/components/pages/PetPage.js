@@ -35,20 +35,23 @@ const [petDetails, setPetDetails] = useState([0]);
         hello1
         <Container>Hello2
           <div>hello3</div>
-        {petDetails().map((pet) => (
-          <div>
-          
-            <Row className="pet-name" key={pet.id}>
+        {petDetails.map((pet) => (
+          <div key={pet.id}>
+          {/* {petDetails.map((pet) => ( */}
+            <Row className="pet-name" 
+            key={pet.id}
+            >
             {pet.petName || "Pet name is not available"} </Row>
         
-           <Row className="pet-image" >
+           <Row className="pet-image"
+           key={pet.id} >
         <img src = {pet.image|| "Pet photo not available"}  alt="Pet"></img>
         <img src = "https://images.pexels.com/photos/825949/pexels-photo-825949.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Pet"></img>
           </Row> 
           
-<Row>      
-<Col>
-        <Table borderless>
+<Row key={pet.id}>      
+<Col key={pet.id}>
+        <Table borderless key={pet.id}>
   <tbody>
     <tr>
       <th scope="row"> Pet's Name </th>
@@ -79,7 +82,7 @@ const [petDetails, setPetDetails] = useState([0]);
 </Table>
 </Col>
 
-<Col>
+<Col key={pet.id}>
 <Table borderless className="contact-info-table">
   {user && (
     <div>
@@ -112,11 +115,13 @@ const [petDetails, setPetDetails] = useState([0]);
         </td>
     </tr>
   </tbody>
+
   </div>
   )}
 </Table>
 </Col>
 </Row>  
+{/* ))} */}
 </div>     
         ))}
 </Container>
