@@ -1,3 +1,61 @@
+# Front-End Repo for Pet Watch
+
+## Table of contents
+
+* [Description](#description)
+* [Demo](#demo)
+* [Technology](#technology)
+* [API Routers](#routers)
+* [Database Schema](#database)
+* [Setup](#setup)
+
+
+## Description 
+
+At Pet Watch, our mission is simple yet profound: to reunite lost pets with their worried families. We understand the deep bond between humans and their four-legged companions, and the heartache that ensues when a pet goes missing. That's why we've created a platform that harnesses the power of community, technology, and compassion to increase the chances of finding lost pets and bringing them back home where they belong.
+
+Pet Watch is a React-Node application. Pet Watch provides an easy way to search the lost and found pet database and to communicate with the user who posted the pet.   
+
+
+## Demo (screenshots)
+
+
+
+
+
+Each user can be signed in as a pet owner who has lost their pet, or a pet finder who has found a pet. 
+
+
+
+
+
+
+
+## Contributors
+
+
+- Luis ([GitHub](https://github.com/Count-MonteCristo))
+- Jennifer ([GitHub](https://github.com/JenMcD-star))
+- Mariela ([GitHub](https://github.com/Mariela-t))
+- Tracy ([GitHub](https://github.com/trca831))
+- Mariana ([GitHub](https://github.com/Maarimar))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Front-End Repo for Node/React Practicum
 
 This will be the front-end for your team's practicum project.
