@@ -11,14 +11,12 @@
 
 
 ## Description 
-
 At Pet Watch, our mission is simple yet profound: to reunite lost pets with their worried families. We understand the deep bond between humans and their four-legged companions, and the heartache that ensues when a pet goes missing. That's why we've created a platform that harnesses the power of community, technology, and compassion to increase the chances of finding lost pets and bringing them back home where they belong.
 
 Pet Watch is a React-Node application. Pet Watch provides an easy way to search the lost and found pet database and to communicate with the user who posted the pet.   
 
 
 ## Demo (screenshots)
-
 Once the Get Started button is clicked the user will be presented with the option of logining in or registering. 
 
 ![login page](images/login.png)
@@ -46,14 +44,21 @@ The user can either delete a pet or edit the information of a pet by clicking th
 
 ![edit pet information](images/edit-page.png)
 
-
+## Technology Used
+Pet Watch was created with:
+- JavaScript
+- React.js
+- Bootstrap
+- ReactStrap
+- Axios
+- Git
+- Visual Studio Code
 
 
 
 
 
 ## Contributors
-
 
 - Luis ([GitHub](https://github.com/Count-MonteCristo))
 - Jennifer ([GitHub](https://github.com/JenMcD-star))
