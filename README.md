@@ -29,7 +29,7 @@ After the user is signed in they will be directed to the dashboard page that inc
 
 On the upper left side of the dashboard page will be the add button and once selected the user will be taken to the add pet page. 
 
-![add pet button, dashboard, and map](images/add-dashboard-map..png)
+![add pet button, dashboard, and map](images/add-dashboard-map.png)
 
 Once they are at the add pet page they can use the toggle button to post either a lost or found pet. 
 
@@ -55,8 +55,24 @@ Pet Watch was created with:
 - Visual Studio Code
 
 
+## API Used
+| HTTP Verbs | Endpoints | Action |
+| --- | --- | --- |
+| POST | /api/v1/auth/register | To sign up a new user account |
+| POST | /api/v1/auth/login | To login an existing user account |
+| POST | /api/causes | To create a new cause |
+| POST | /api/v1/pets | To post a new pet |
+| GET | /api/v1 | To retrieve all pets on the platform |
+| GET | /api/v1/pets | To retrieve details of a single pet |
+| GET | /URL/geocoding/v1/address?key=${process.env.REACT_APP_MAPQUEST_KEY}&location=${zipcode} | To retrieve details of map |
+| PATCH | /api/causes/:causeId | To edit the details of a single cause |
+| DELETE | /api/v1/pets/${_id} | To delete a single pet |
 
+## Database Schema
 
+![sitemap example](images/sitemap.png)
+
+![user flow chart example](images/user-flow-chart.png)
 
 ## Contributors
 
